@@ -1,66 +1,86 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap');
+/** @format */
 
-body{
-    font-family: 'Poppins', sans-serif;
-    background: #ececec;
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap");
+
+:root {
+	--primary-color: #2be135; /* Blue example */
+}
+
+body {
+	font-family: "Poppins", sans-serif;
+	background: #ececec;
 }
 
 /*------------ Login container ------------*/
 
-.box-area{
-    width: 430px;
+.box-area {
+	width: 430px;
+}
+
+.bg-green{
+  background-color: var(--primary-color);
 }
 
 /*------------ Right box ------------*/
 
-.right-box{
-    padding: 40px 30px 40px 40px;
+.right-box {
+	padding: 40px 30px 40px 40px;
 }
 
 /*------------ Custom Placeholder ------------*/
 
-::placeholder{
-    font-size: 16px;
+::placeholder {
+	font-size: 16px;
 }
 
-.rounded-4{
-    border-radius: 20px;
+.rounded-4 {
+	border-radius: 20px;
 }
-.rounded-5{
-    border-radius: 30px;
+.rounded-5 {
+	border-radius: 30px;
 }
 
 .pointer-on-hover {
-  cursor: pointer;
-  color: rgb(2, 157, 2);
+	cursor: pointer;
+	color: rgb(2, 157, 2);
 }
 
 .div-on-hover {
-  opacity: 1; /* Default opacity */
-  transition: opacity 0.2s ease-in-out;
+	opacity: 1; /* Default opacity */
+	transition: opacity 0.2s ease-in-out;
 }
 
 .div-on-hover:hover {
-  opacity: 0.5; /* Opacity on hover */
+	opacity: 0.5; /* Opacity on hover */
 }
 .button-style {
-  color: green; /* Opacity on hover */
+	color: green; /* Opacity on hover */
+}
+.logo-img {
+	max-width: 150px; /* Adjust as needed */
+	height: auto; /* Preserve aspect ratio */
 }
 
 /*------------ For small screens------------*/
 
-@media only screen and (max-width: 768px){
+@media only screen and (max-width: 768px) {
+	.box-area {
+		margin: 0 10px;
+	}
+	.left-box {
+		height: 100px;
+		overflow: hidden;
+	}
+	.right-box {
+		padding: 20px;
+	}
+	.logo-img {
+		max-width: 80px;
+	}
+}
 
-     .box-area{
-        margin: 0 10px;
-
-     }
-     .left-box{
-        height: 100px;
-        overflow: hidden;
-     }
-     .right-box{
-        padding: 20px;
-     }
-
+@media (max-width: 480px) {
+	.logo-img {
+		max-width: 60px;
+	}
 }

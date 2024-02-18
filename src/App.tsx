@@ -7,13 +7,16 @@ import Register from './pages/Register';
 import ProtectedRoutes from './ProtectedRoutes';
 import Home from './pages/Home';
 import Navbar from './components/Navbar';
+import Footer from './components/footer/Footer';
+import Navbar1 from './components/Navbar1';
 
 
 function App() {
   return (
     <Router>
-      <Navbar/>
-    <Routes>
+      <Navbar1/>
+      {/* <Navbar/> */}
+    {/* <Routes>
         <Route path='/login' element={<Login/>} />
         <Route path='/register' element={<Register/>} />
 
@@ -21,7 +24,8 @@ function App() {
         <Route element={<ProtectedRoutes/>}>
             <Route path='/' element={<Home/>} />
         </Route>/
-    </Routes>
+    </Routes> */}
+    <Footer/>
 </Router>
   );
 }
