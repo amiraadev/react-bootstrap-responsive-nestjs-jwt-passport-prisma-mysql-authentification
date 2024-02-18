@@ -16,15 +16,13 @@ function App() {
     <Router>
       <Navbar1/>
       {/* <Navbar/> */}
-    {/* <Routes>
+    <Routes>
         <Route path='/login' element={<Login/>} />
         <Route path='/register' element={<Register/>} />
-
-
         <Route element={<ProtectedRoutes/>}>
             <Route path='/' element={<Home/>} />
         </Route>/
-    </Routes> */}
+    </Routes>
     <Footer/>
 </Router>
   );
