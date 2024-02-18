@@ -17,8 +17,8 @@ body {
 	width: 430px;
 }
 
-.bg-green{
-  background-color: var(--primary-color);
+.bg-green {
+	background-color: var(--primary-color);
 }
 
 /*------------ Right box ------------*/
@@ -61,6 +61,11 @@ body {
 	height: auto; /* Preserve aspect ratio */
 }
 
+.react-icon-class {
+	color: var(--primary-color);
+	font-size: 40px;
+}
+
 /*------------ For small screens------------*/
 
 @media only screen and (max-width: 768px) {
@@ -76,6 +81,10 @@ body {
 	}
 	.logo-img {
 		max-width: 80px;
+	}
+	.react-icon-class {
+		font-size: 20px;
+		margin: 10px;
 	}
 }
 
