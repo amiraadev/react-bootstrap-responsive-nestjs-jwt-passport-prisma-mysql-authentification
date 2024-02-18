@@ -10,6 +10,12 @@ import Navbar from "./components/Navbar";
 import Footer from "./components/footer/Footer";
 import Navbar1 from "./components/Navbar1";
 import Profil from "./pages/Profil";
+import axios from "axios";
+
+/* withCredentials:true :==> to allow this request to get credentials from that API Endpoint.
+ Exp: (when we register a user==>getting back a cookie from backend url) ==>it will be saved in the 
+ frontend to know this user is loggedIn */
+axios.defaults.withCredentials = true;
 
 function App() {
   return (

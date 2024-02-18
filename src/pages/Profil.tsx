@@ -20,7 +20,7 @@ export default function Profil() {
   //       console.log(error);
   //     }
   //   }, []);
-  let test = Cookies.get("token");
-  console.log("====>", test);
+//   let test = Cookies.get("token");
+//   console.log("====>", test);
   return <div>Profil</div>;
 }
