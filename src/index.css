@@ -4,6 +4,8 @@
 
 :root {
 	--primary-color: #2be135; /* Blue example */
+	--light-color: #d8efda; /* Blue example */
+	--dark-color: #0c130c; /* Blue example */
 }
 
 body {
@@ -64,6 +66,34 @@ body {
 .react-icon-class {
 	color: var(--primary-color);
 	font-size: 40px;
+}
+
+.class-button {
+	position: relative;
+	opacity: 0.7;
+	cursor: not-allowed;
+	border-radius: 0.5rem;
+	opacity: 0.8;
+	transition: opacity 0.2s ease-in-out;
+	width: 100%;
+}
+.background-green {
+	background-color: var(--primary-color);
+}
+.background-white {
+	background-color: var(--light-color);
+}
+.background-white {
+	background-color: var(--light-color);
+}
+.border-black {
+	border: var(--light-color);
+}
+.text-black {
+	color: var(--dark-color);
+}
+.text-white {
+	color: var(--light-color);
 }
 
 /*------------ For small screens------------*/
