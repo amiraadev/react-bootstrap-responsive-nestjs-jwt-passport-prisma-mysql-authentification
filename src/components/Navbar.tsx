@@ -1,29 +1,15 @@
 /** @format */
 
 import React from "react";
+import useThemeStore from "../stores/themeStore";
 
 const Navbar = () => {
+	const { isDarkMode} = useThemeStore();
+	console.log({ isDarkMode: isDarkMode});
+	
 	return (
 		<>
-			{/* <nav classNameNameName='d-flex justify-content-between navbar navbar-expand-lg navbar-dark bg-success'> */}
-			{/* <nav classNameName='d-flex justify-content-between navbar navbar-expand-lg navbar-light bg-light'>
-
-				<div className='p-2'>
-                    <img src='./roundesk-logo.png' className='logo-img'/>
-                </div>
-				<div className='p-2'>
-					<button type='button' className='btn btn-outline-success'>
-						sign up
-					</button>
-					<button type='button' className='m-1 btn btn btn-success'>
-						login
-					</button>
-				</div>
-			</nav> */}
-
-
-			{/* <nav className='navbar bg-body-tertiary fixed-top'> */}
-			<nav className='navbar bg-body-tertiary fixed-top'>
+			<nav className={`navbar bg-body-tertiary fixed-top ${isDarkMode ? 'navbar-dark' : 'navbar-light'}`} >
 				<div className='container-fluid'>
 				<img src='./roundesk-logo.png' className='logo-img'/>
 					<button

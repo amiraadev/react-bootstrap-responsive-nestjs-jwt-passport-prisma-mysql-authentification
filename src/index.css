@@ -3,16 +3,30 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap");
 
 :root {
-	--primary-color: #2be135; /* Blue example */
-	--light-color: #d8efda; /* Blue example */
-	--dark-color: #0c130c; /* Blue example */
+	--primary-color: #2be135;
+	--text-color: #0c130c;
+	--body-background: #ececec;
+	--body-color: #0c130c;
+	--modal-color: white;
 }
+[data-theme="dark"] {
+	--primary-color: #2be135;
+	--text-color: #f1f6f1;
+	--body-background: #2c2f31;
+	--body-color: #f1f6f1;
+	--modal-color: #212529;
+}
+
 
 body {
 	font-family: "Poppins", sans-serif;
-	background: #ececec;
+	background-color: var(--body-background) !important;
+	color:var(--body-color) !important;
 }
 
+.bg-modal{
+	background-color: var(--modal-color);
+}
 /*------------ Login container ------------*/
 
 .box-area {
@@ -71,11 +85,13 @@ body {
 .class-button {
 	position: relative;
 	opacity: 0.7;
+	padding: 5px;
 	cursor: not-allowed;
-	border-radius: 0.5rem;
+	border-radius: 0.4rem;
 	opacity: 0.8;
 	transition: opacity 0.2s ease-in-out;
 	width: 100%;
+	border: none;
 }
 .background-green {
 	background-color: var(--primary-color);
@@ -90,7 +106,7 @@ body {
 	border: var(--light-color);
 }
 .text-black {
-	color: var(--dark-color);
+	color: var(--text-color);
 }
 .text-white {
 	color: var(--light-color);

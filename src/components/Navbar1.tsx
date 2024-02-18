@@ -3,23 +3,30 @@
 
 
 import Container from "react-bootstrap/Container";
-import Button from 'react-bootstrap/Button';
+import Button from './Button';
 import Navbar from 'react-bootstrap/Navbar';
+import DarkMode from "./DarkMode/DarkMode";
 
+import useThemeStore from "../stores/themeStore";
 const Navbar1 = () => {
+	const { isDarkMode} = useThemeStore();
 	return (
 		<Navbar
-			bg='light '
+			bg={`${isDarkMode ? 'dark' : 'light'}`}
 			variant={"light"}
 			expand='lg'
-			className='justify-content-between'>
+			className='justify-content-between'
+
+			
+			>
 			<Container className='justify-content-between'>
 				<div >
 					<img src='./roundesk-logo.png' className='logo-img' />
 				</div>
 				<div >
-					<Button variant='outline-success' className='m-2'>Search</Button>
-					<Button variant='success' className='m-2'>Search</Button>
+				<DarkMode />
+					{/* <Button label="hello" onClick={()=>{console.log("test")}}/> */}
+		
 				</div>
 				
 			</Container>

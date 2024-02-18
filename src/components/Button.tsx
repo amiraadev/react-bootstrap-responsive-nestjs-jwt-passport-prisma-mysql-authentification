@@ -1,5 +1,5 @@
 /** @format */
-"use client"
+"use client";
 import React from "react";
 import { IconType } from "react-icons";
 
@@ -24,18 +24,11 @@ const Button: React.FC<ButtonProps> = ({
 			onClick={onClick}
 			disabled={disabled}
 			className={`
-      relative
-      disabled:opacity-70
-      disabled:cursor-not-allowed
-      rounded-lg
-      hover:opacity-80
-      transition
-      w-full
+			class-button
       ${outline ? "background-white" : "background-green"}
       ${outline ? "border-black" : "background-green"}
       ${outline ? "text-black" : "text-white"}
-      ${small ? "py-1" : "py-3"}
-      ${small ? "text-sm" : "text-md"}
+      ${small ? "text-small" : "text-med"}
       ${small ? "font-light" : "font-semibold"}
       ${small ? "border-[1px]" : "border-2"}
       `}>

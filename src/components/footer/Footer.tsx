@@ -13,17 +13,20 @@ import { Link } from "react-router-dom";
 import { FaSquareFacebook } from "react-icons/fa6";
 import { FaGithub } from "react-icons/fa";
 import { FaLinkedin } from "react-icons/fa6";
+import useThemeStore from "../../stores/themeStore";
+
 
 const Footer = () => {
+	const { isDarkMode} = useThemeStore();
 	return (
 		<>
-			<Navbar bg='light ' variant={"light"} expand='lg'>
-				<Container className='d-flex align-items-center justify-content-center'>
+			<Navbar bg={`${isDarkMode ? 'dark' : 'light'}`} variant={"light"} expand='lg'>
+				<Container className='d-flex align-items-center justify-content-between'>
 					<Row>
 						<Col
 							className='d-flex flex-column align-items-center justify-content-center ft-1 m-4'
 							xs={12}
-							md={3}>
+							md={4}>
 							<h3>
 								<span className='title-span'>round</span>desk
 							</h3>

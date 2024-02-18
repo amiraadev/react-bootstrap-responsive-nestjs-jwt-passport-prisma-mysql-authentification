@@ -59,7 +59,7 @@ const Login = () => {
 
   return (
     <div className="container d-flex justify-content-center align-items-center min-vh-100">
-      <div className="row border rounded-5 p-3 bg-white shadow box-area g-5">
+      <div className="row border rounded-5 p-3 bg-modal shadow box-area g-5">
         <form onSubmit={formik.handleSubmit}>
           <div className="mb-4 d-flex justify-content-center align-items-center ">
             <div>
@@ -112,7 +112,7 @@ const Login = () => {
           <br></br>
 
           <div className="d-grid">
-            <button type="submit" className="btn btn-success">
+            <button type="submit" className='class-button background-green'>
               Submit
             </button>
           </div>
