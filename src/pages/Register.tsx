@@ -38,6 +38,7 @@ const Register = () => {
         const response = await axios.post(
           "http://localhost:5000/auth/signup",
           { email, mot_de_passe, profil },
+          //withCredentials:true :==> to allow this request to get credentials from that API Endpoint.
           { withCredentials: true }
         );
         console.log("===>", response);
