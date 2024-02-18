@@ -33,6 +33,7 @@ const Login = () => {
         const response = await axios.post(
           "http://localhost:5000/auth/signin",
           { email, mot_de_passe },
+          //withCredentials:true :==> to allow this request to get credentials from that API Endpoint.
           { withCredentials: true }
         );
         console.log("===>", response);
