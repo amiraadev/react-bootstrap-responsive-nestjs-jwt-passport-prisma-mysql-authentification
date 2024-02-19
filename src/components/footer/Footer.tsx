@@ -82,7 +82,7 @@ const Footer = () => {
 				</Container>
 			</Navbar>
 			<div className='Last-footer'>
-				<p>Designed By Amira</p>
+				<p>Designed By Rayen</p>
 			</div>
 		</>
 	);

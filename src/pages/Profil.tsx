@@ -36,7 +36,9 @@ export default function Profil() {
 
   return (
     <>
-      <div>Hello {user.email}</div>
+      <div>
+        Hello {user.email} , Profil: {user.profil}
+      </div>
       <button onClick={() => logOut()}>Log Out</button>
     </>
   );
