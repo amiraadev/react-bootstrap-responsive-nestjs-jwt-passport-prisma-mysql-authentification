@@ -1,13 +1,11 @@
 import { Outlet, Navigate } from "react-router-dom";
-import { useAuthStore } from "./stores/authStore";
+import { userStatusStore } from "./stores/userStatusStore";
+// import { useAuthStore } from "./stores/authStore";
 
 const ProtectedRoutes = () => {
-  const { isLoggedIn } = useAuthStore();
-  return (
-    <div>
-      {isLoggedIn ? <Outlet /> : <Navigate to="/login" />}
-    </div>
-  );
+  // const { isLoggedIn } = useAuthStore();
+  const { status } = userStatusStore();
+  return <div>{status ? <Outlet /> : <Navigate to="/login" />}</div>;
 };
 
 export default ProtectedRoutes;

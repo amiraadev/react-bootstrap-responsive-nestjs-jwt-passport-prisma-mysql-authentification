@@ -42,7 +42,7 @@ const Register = () => {
           { withCredentials: true }
         );
         console.log("===>", response);
-        return response.data;
+        navigate("/login");
       } catch (error) {
         //   throw new Error(`Error making POST request: ${error}`);
         console.log(error);
@@ -161,7 +161,7 @@ const Register = () => {
             </div>
           </div>
           <div className="d-grid">
-            <button type="submit" className='class-button background-green'>
+            <button type="submit" className="class-button background-green">
               Submit
             </button>
           </div>

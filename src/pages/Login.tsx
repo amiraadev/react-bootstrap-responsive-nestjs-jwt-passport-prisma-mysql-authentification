@@ -7,8 +7,8 @@ import { useFormik } from "formik";
 import * as Yup from "yup";
 import axios from "axios";
 
-import useIDService from "../stores/userIdStore";
-import { userIDStore } from "../stores/userIdStore";
+import userStatusService from "../stores/userStatusStore";
+import { userStatusStore } from "../stores/userStatusStore";
 
 interface User {
   email: string;
@@ -18,8 +18,8 @@ interface User {
 const Login = () => {
   const [user, setUser] = useState<User>({ email: "", profil: "" });
   const [ok, setOk] = useState(false);
-  const { saveUserId } = useIDService();
-  const { id } = userIDStore();
+  const { saveUserStatus } = userStatusService();
+  const { status } = userStatusStore();
 
   const navigate = useNavigate();
   const { setIsLoggedIn } = useAuthStore();
@@ -51,11 +51,12 @@ const Login = () => {
         );
         console.log("===>", response);
         console.log("i===>", response.data.id);
-        saveUserId(response.data.id);
+
+        saveUserStatus(true);
+
         setOk(true);
-        setTimeout(() => {}, 1000);
-        console.log("id from store===>", id);
-        console.log("typeof===>", typeof id);
+        navigate("/profil");
+
         return response.data;
       } catch (error) {
         //   throw new Error(`Error making POST request: ${error}`);
@@ -77,19 +78,19 @@ const Login = () => {
   };
 
   //getProfil:
-  const getProfil = async () => {
-    try {
-      const response = await axios.get(`http://localhost:5000/users/${id}`);
-      console.log("===>", response);
-      console.log("i===>", response.data.user);
-      setUser(response.data.user);
-      console.log("user profil===>", user);
-      return response.data;
-    } catch (error) {
-      //   throw new Error(`Error making POST request: ${error}`);
-      console.log(error);
-    }
-  };
+  // const getProfil = async () => {
+  //   try {
+  //     const response = await axios.get(`http://localhost:5000/users/${id}`);
+  //     console.log("===>", response);
+  //     console.log("i===>", response.data.user);
+  //     setUser(response.data.user);
+  //     console.log("user profil===>", user);
+  //     return response.data;
+  //   } catch (error) {
+  //     //   throw new Error(`Error making POST request: ${error}`);
+  //     console.log(error);
+  //   }
+  // };
 
   return (
     <>
@@ -170,7 +171,7 @@ const Login = () => {
           Welcome {user.email} , your profile is : {user.profil}
         </h1>
       )}
-      <button onClick={() => getProfil()}>Test Profil</button>
+      {/* <button onClick={() => getProfil()}>Test Profil</button> */}
     </>
   );
 };
