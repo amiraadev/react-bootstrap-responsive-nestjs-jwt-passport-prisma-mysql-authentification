@@ -31,24 +31,24 @@ function RegisterPage() {
 							<Card.Text className='text-muted'>Create an account!</Card.Text>
 							<Form className='px-5'>
 								<fieldset>
-									<Form.Group className='mb-3'>
+									<Form.Group className='mt-3'>
 										<Form.Control size='lg' placeholder='Username' />
 									</Form.Group>
-									<Form.Group className='mb-3'>
+									<Form.Group className='mt-3'>
 										<Form.Control size='lg' placeholder='Email' />
 									</Form.Group>
-									<Form.Group className='mb-3'>
+									<Form.Group className='mt-3'>
 										<Form.Control size='lg' placeholder='Password' />
 									</Form.Group>
-									<Form.Group className='mb-3'>
+									<Form.Group className='mt-3'>
 										<Form.Control size='lg' placeholder='Confirm Password' />
 									</Form.Group>
-									<Form.Group className='mb-3'>
+									<Form.Group className='mt-3'>
 										<Form.Select size='lg'>
 											<option>Disabled select</option>
 										</Form.Select>
 									</Form.Group>
-									<Button type="submit" label='submit' onClick={() => {}} />
+									<Button type='submit' label='submit' onClick={() => {}} />
 								</fieldset>
 							</Form>
 						</Card.Body>

@@ -78,9 +78,9 @@ function LoginPage() {
 							<Card.Text className='text-center text-muted'>
 								Login to your account
 							</Card.Text>
-							<Form className='px-5'onSubmit={formik.handleSubmit}>
+							<Form className='px-5' onSubmit={formik.handleSubmit}>
 								<fieldset>
-									<Form.Group className='mb-3'>
+									<Form.Group className='mt-3'>
 										<Form.Control
 											size='lg'
 											type='email'
@@ -90,17 +90,29 @@ function LoginPage() {
 											name='email'
 											onChange={formik.handleChange}
 											value={formik.values.email}
+											required
 										/>
 									</Form.Group>
 									{formik.touched.email && formik.errors.email ? (
-										<div className='text-danger'>{formik.errors.email}</div>
+										<div className='text-danger px-2'>{formik.errors.email}</div>
 									) : null}
-									<Form.Group className='mb-3'>
-										<Form.Select size='lg' id='disabledSelect'>
-											<option>Disabled select</option>
-										</Form.Select>
+									<Form.Group className='mt-3'>
+										<Form.Control
+											size='lg'
+											type='passWord'
+											className='form-control'
+											placeholder='Enter passWord'
+											id='passWord'
+											name='passWord'
+											onChange={formik.handleChange}
+											value={formik.values.passWord}
+											required
+										/>
 									</Form.Group>
-									<Button type="submit" label='submit' onClick={() => {}} />
+									{formik.touched.passWord && formik.errors.passWord ? (
+										<div className='text-danger px-2'>{formik.errors.passWord}</div>
+									) : null}
+									<Button type='submit' label='submit' onClick={() => {}} />
 								</fieldset>
 							</Form>
 						</Card.Body>
