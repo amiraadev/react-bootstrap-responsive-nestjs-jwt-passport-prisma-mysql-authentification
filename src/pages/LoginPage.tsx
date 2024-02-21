@@ -30,24 +30,24 @@ function LoginPage() {
 	const formik = useFormik({
 		initialValues: {
 			email: "",
-			passWord: "",
+			password: "",
 		},
 		validationSchema: Yup.object({
 			email: Yup.string()
 				.email("Invalid email address")
 				.required("Required field"),
-			passWord: Yup.string()
+			password: Yup.string()
 				.min(6, "Password must be at least 6 characters")
 				.required("Required field"),
 		}),
 		onSubmit: async (values) => {
 			console.log("hello");
 
-			const { email, passWord } = values;
+			const { email, password } = values;
 			try {
 				const response = await axios.post(
 					"http://localhost:5000/auth/signin",
-					{ email, passWord }
+					{ email, password }
 					//withCredentials:true :==> to allow this request to get credentials from that API Endpoint.
 					// { withCredentials: true }
 				);
@@ -99,18 +99,18 @@ function LoginPage() {
 									<Form.Group className='mt-3'>
 										<Form.Control
 											size='lg'
-											type='passWord'
+											type='password'
 											className='form-control'
-											placeholder='Enter passWord'
-											id='passWord'
-											name='passWord'
+											placeholder='Enter password'
+											id='password'
+											name='password'
 											onChange={formik.handleChange}
-											value={formik.values.passWord}
+											value={formik.values.password}
 											required
 										/>
 									</Form.Group>
-									{formik.touched.passWord && formik.errors.passWord ? (
-										<div className='text-danger px-2'>{formik.errors.passWord}</div>
+									{formik.touched.password && formik.errors.password ? (
+										<div className='text-danger px-2'>{formik.errors.password}</div>
 									) : null}
 									<Button type='submit' label='submit' onClick={() => {}} />
 								</fieldset>

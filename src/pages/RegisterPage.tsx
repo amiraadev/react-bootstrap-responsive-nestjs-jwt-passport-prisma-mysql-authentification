@@ -30,31 +30,30 @@ function RegisterPage() {
 		initialValues: {
 			username: "",
 			email: "",
-			passWord: "",
-			confirmPassWord: "",
+			password: "",
+			confirmPassword: "",
 		},
 		validationSchema: Yup.object({
-			username: Yup.string()
-				.required("Required field"),
+			username: Yup.string().required("Required field"),
 			email: Yup.string()
 				.email("Invalid email address")
 				.required("Required field"),
-			passWord: Yup.string()
+			password: Yup.string()
 				.min(6, "Password must be at least 6 characters")
 				.required("Required field"),
-			confirmPassWord: Yup.string()
+			confirmPassword: Yup.string()
 				.label("confirm password")
 				.required()
-				.oneOf([Yup.ref("passWord")], "Passwords must match"),
+				.oneOf([Yup.ref("password")], "Passwords must match"),
 		}),
 		onSubmit: async (values) => {
 			console.log("hello");
 
-			const { email, passWord } = values;
+			const { email, password } = values;
 			try {
 				const response = await axios.post(
 					"http://localhost:5000/auth/signin",
-					{ email, passWord }
+					{ email, password }
 					//withCredentials:true :==> to allow this request to get credentials from that API Endpoint.
 					// { withCredentials: true }
 				);
@@ -73,7 +72,7 @@ function RegisterPage() {
 		<Container className='my-3'>
 			<Row>
 				<Col md={{ span: 6, offset: 3 }}>
-					<Card >
+					<Card>
 						<Card.Header className='text-center'>
 							<h4>Register</h4>
 						</Card.Header>
@@ -81,19 +80,35 @@ function RegisterPage() {
 							<Card.Title className='text-center'>
 								<h1>Welcome </h1>
 							</Card.Title>
-							<Card.Text className='text-muted text-center'>Create an account!</Card.Text>
+							<Card.Text className='text-muted text-center'>
+								Create an account!
+							</Card.Text>
 							<Form className='px-5' onSubmit={formik.handleSubmit}>
 								<fieldset>
 									<Form.Group className='mt-3'>
-										<Form.Control size='lg' placeholder='Username' required/>
+										<Form.Control
+											size='lg'
+											placeholder='Username'
+											name="username"
+											required
+											onChange={formik.handleChange}
+											onBlur={formik.handleBlur}
+										/>
 									</Form.Group>
 									{formik.touched.username && formik.errors.username ? (
 										<div className='text-danger px-2'>
 											{formik.errors.username}
 										</div>
 									) : null}
-									<Form.Group className='mt-3'>
-										<Form.Control size='lg' placeholder='Email' type='email' required/>
+									 <Form.Group className='mt-3'>
+										<Form.Control
+											size='lg'
+											placeholder='Email'
+											type='email'
+											name='email'
+											required
+											onChange={formik.handleChange}
+										/>
 									</Form.Group>
 									{formik.touched.email && formik.errors.email ? (
 										<div className='text-danger px-2'>
@@ -101,19 +116,36 @@ function RegisterPage() {
 										</div>
 									) : null}
 									<Form.Group className='mt-3'>
-										<Form.Control size='lg' placeholder='Password' required/>
+										<Form.Control
+											size='lg'
+											type='password'
+											name="password"
+											placeholder='Password'
+											required
+											onChange={formik.handleChange}
+											
+										/>
 									</Form.Group>
-									{formik.touched.passWord && formik.errors.passWord ? (
+									{formik.touched.password && formik.errors.password ? (
 										<div className='text-danger px-2'>
-											{formik.errors.passWord}
+											{formik.errors.password}
 										</div>
 									) : null}
 									<Form.Group className='mt-3'>
-										<Form.Control size='lg' placeholder='Confirm Password' required/>
+										<Form.Control
+											size='lg'
+											type='password'
+											name="confirmPassword"
+											placeholder='Confirm Password'
+											required
+											onChange={formik.handleChange}
+											value={formik.values.confirmPassword}
+										/>
 									</Form.Group>
-									{formik.touched.confirmPassWord && formik.errors.confirmPassWord ? (
+									{formik.touched.confirmPassword &&
+									formik.errors.confirmPassword ? (
 										<div className='text-danger px-2'>
-											{formik.errors.confirmPassWord}
+											{formik.errors.confirmPassword}
 										</div>
 									) : null}
 
