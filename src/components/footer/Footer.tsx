@@ -19,11 +19,11 @@ const Footer = () => {
 	const { isDarkMode } = useThemeStore();
 	return (
 		<>
-			<Container fluid>
-				<Row>
-					<Col sm className='text-center'>
+			<Container fluid className={`${isDarkMode ? "bg-dark" : "bg-light"}`}>
+				<Row className='py-3'>
+					<Col sm className='text-center ft-1'>
 						<h3>
-							<span className='title-span'>round</span>desk
+							<span className='title-span'>amira</span>dev
 						</h3>
 						<div className='px-3'>
 							<span className='text-justify '>
@@ -33,8 +33,8 @@ const Footer = () => {
 							</span>
 						</div>
 					</Col>
-					<Col sm className='text-center'>
-						<div className='footer-icons'>
+					<Col sm className='d-flex justify-content-center align-items-center'>
+						<div>
 							<Link to='/about'>
 								<FaSquareFacebook className='react-icon-class' />
 							</Link>
@@ -46,32 +46,21 @@ const Footer = () => {
 							</Link>
 						</div>
 					</Col>
-					<Col sm className='text-center'>
-						<div className='d-flex flex-column align-items-center justify-content-center ft-1'>
+					<Col sm className='text-center  ft-1'>
+						<div className='d-flex flex-column align-items-center justify-content-center'>
 							<h5>Contact</h5>
 							<ul>
-								<li className='nav-item'>
-									<i className='fa-solid fa-phone-volume'></i> +92 3121324083
-								</li>
-								<li className='nav-item'>
-									<i className='fa-solid fa-envelope'></i>{" "}
-									allaguiamira@gmail.com
-								</li>
-								<li className='nav-item'>
-									<p>
-										<i className='fa-solid fa-paper-plane'></i> Allagui,
-										Tunisia.
-									</p>
-								</li>
+								<li className='nav-item'>+92 3121324083</li>
+								<li className='nav-item'>amiradev@gmail.com</li>
+								<li className='nav-item'>Tunis, Tunisia.</li>
 							</ul>
 						</div>
 					</Col>
 				</Row>
 				<Row className='Last-footer'>
-					<p>Designed By Rayen</p>
+					<p>Designed By Amira</p>
 				</Row>
 			</Container>
-
 		</>
 	);
 };

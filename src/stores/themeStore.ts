@@ -15,8 +15,7 @@ export interface ThemeState {
     devtools(
       // persist(
         (set) => ({
-            isDarkMode: false,
-      
+            isDarkMode: false,     
             setIsDarkMode: (isDarkMode) => set({ isDarkMode })
         }),
         {
