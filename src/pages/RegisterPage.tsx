@@ -48,7 +48,7 @@ function RegisterPage() {
 											<option>Disabled select</option>
 										</Form.Select>
 									</Form.Group>
-									<Button label='submit' onClick={() => {}} />
+									<Button type="submit" label='submit' onClick={() => {}} />
 								</fieldset>
 							</Form>
 						</Card.Body>

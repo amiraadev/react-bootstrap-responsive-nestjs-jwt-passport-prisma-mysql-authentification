@@ -3,6 +3,8 @@
 import React from "react";
 import { IconType } from "react-icons";
 
+type ButtonType = "submit" | "reset" | "button" | undefined ;
+
 interface ButtonProps {
 	label: string;
 	onClick: (e: React.MouseEvent<HTMLButtonElement>) => void;
@@ -10,6 +12,7 @@ interface ButtonProps {
 	outline?: boolean;
 	small?: boolean;
 	icon?: IconType;
+	type: ButtonType;
 }
 const Button: React.FC<ButtonProps> = ({
 	label,
@@ -18,11 +21,13 @@ const Button: React.FC<ButtonProps> = ({
 	outline,
 	small,
 	icon: Icon,
+	type
 }) => {
 	return (
 		<button
 			onClick={onClick}
 			disabled={disabled}
+			type={type}
 			className={`
 			class-button
       ${outline ? "background-white" : "background-green"}
