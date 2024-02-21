@@ -1,42 +1,39 @@
-import React from "react";
-import logo from "./logo.svg";
+/** @format */
+
+
 import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
-import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
-import Login from "./pages/Login";
-import Register from "./pages/Register";
+import axios from "axios";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+
 import ProtectedRoutes from "./ProtectedRoutes";
-import Home from "./pages/Home";
-import Navbar from "./components/Navbar";
+
 import Footer from "./components/footer/Footer";
 import Navbar1 from "./components/Navbar1";
-import Profil from "./pages/Profil";
-import axios from "axios";
-import PageContainer from "./components/PageContainer";
+
+import Home from "./pages/Home";
 import RegisterPage from "./pages/RegisterPage";
 import LoginPage from "./pages/LoginPage";
+import Profile from "./pages/Profile";
 
-/* withCredentials:true :==> to allow this request to get credentials from that API Endpoint.
- Exp: (when we register a user==>getting back a cookie from backend url) ==>it will be saved in the 
- frontend to know this user is loggedIn */
+
 axios.defaults.withCredentials = true;
 
 function App() {
-  return (
-    <Router>
-      <Navbar1 />
-      {/* <Navbar/> */}
-      <Routes>
-        <Route path="/login" element={<LoginPage />} />
-        <Route path="/register" element={<RegisterPage />} />
-        <Route element={<ProtectedRoutes />}>
-          <Route path="/" element={<Home />} />
-          <Route path="/profil" element={<Profil />} />
-        </Route>
-        /
-      </Routes>
-      <Footer />
-    </Router>
-  );
+	return (
+		<Router>
+			<Navbar1 />
+			<Routes>
+				<Route path='/login' element={<LoginPage />} />
+				<Route path='/register' element={<RegisterPage />} />
+				<Route element={<ProtectedRoutes />}>
+					<Route path='/' element={<Home />} />
+					<Route path='/profile' element={<Profile />} />
+				</Route>
+				/
+			</Routes>
+			<Footer />
+		</Router>
+	);
 }
 
 export default App;

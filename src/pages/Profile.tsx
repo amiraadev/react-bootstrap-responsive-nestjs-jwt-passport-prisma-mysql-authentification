@@ -3,7 +3,7 @@ import axios from "axios";
 import Cookies from "js-cookie";
 import userStatusService from "../stores/userStatusStore";
 
-export default function Profil() {
+export default function Profile() {
   const { saveUserStatus } = userStatusService();
   const [user, setuser] = useState({ email: "", profil: "" });
 

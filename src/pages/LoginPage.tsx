@@ -18,9 +18,9 @@ function LoginPage() {
 		navigate("/register");
 	}, []);
 	return (
-		<Container className='my-3 px-5'>
-			<Row className='justify-content-md-center'>
-				<Col md='auto' className=' px-5'>
+		<Container className='my-3 '>
+			<Row>
+				<Col md={{ span: 6, offset: 3 }}>
 					<Card className='text-center'>
 						<Card.Header>
 							<h4>Login</h4>
