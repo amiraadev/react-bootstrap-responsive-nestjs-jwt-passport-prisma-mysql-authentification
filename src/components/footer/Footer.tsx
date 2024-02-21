@@ -19,8 +19,8 @@ const Footer = () => {
 	const { isDarkMode } = useThemeStore();
 	return (
 		<>
-			<Container fluid className={`${isDarkMode ? "bg-dark" : "bg-light"}`}>
-				<Row className='py-3'>
+			<Container fluid className={`${isDarkMode ? "bg-dark" : "bg-light "} footer-class`}   style={{backgroundColor:"yellow"}}>
+				<Row className='py-3' >
 					<Col sm className='text-center ft-1'>
 						<h3>
 							<span className='title-span'>amira</span>dev
@@ -57,7 +57,7 @@ const Footer = () => {
 						</div>
 					</Col>
 				</Row>
-				<Row className='Last-footer'>
+				<Row className='Last-footer' >
 					<p>Designed By Amira</p>
 				</Row>
 			</Container>
