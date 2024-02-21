@@ -13,7 +13,7 @@ const Navbar1 = () => {
 	return (
 		<Navbar
 			bg={`${isDarkMode ? 'dark' : 'light'}`}
-			variant={"light"}
+			variant={`${isDarkMode ? 'dark' : 'light'}`}
 			expand='lg'
 			className='justify-content-between'
 

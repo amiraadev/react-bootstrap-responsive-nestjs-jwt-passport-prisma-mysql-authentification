@@ -13,7 +13,7 @@ export interface ThemeState {
 
   export const useThemeStore = create<ThemeState & themesActions>()(
     devtools(
-      persist(
+      // persist(
         (set) => ({
             isDarkMode: false,
       
@@ -22,7 +22,7 @@ export interface ThemeState {
         {
           name: "theme-storage",
         }
-      )
+      // )
     )
   );
   
