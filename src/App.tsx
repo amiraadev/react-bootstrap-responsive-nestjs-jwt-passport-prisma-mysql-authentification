@@ -12,6 +12,8 @@ import Navbar1 from "./components/Navbar1";
 import Profil from "./pages/Profil";
 import axios from "axios";
 import PageContainer from "./components/PageContainer";
+import RegisterPage from "./pages/RegisterPage";
+import LoginPage from "./pages/LoginPage";
 
 /* withCredentials:true :==> to allow this request to get credentials from that API Endpoint.
  Exp: (when we register a user==>getting back a cookie from backend url) ==>it will be saved in the 
@@ -24,9 +26,8 @@ function App() {
       <Navbar1 />
       {/* <Navbar/> */}
       <Routes>
-        {/* <Route path="/login" element={<Login />} /> */}
-        <Route path="/login" element={<PageContainer />} />
-        <Route path="/register" element={<Register />} />
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="/register" element={<RegisterPage />} />
         <Route element={<ProtectedRoutes />}>
           <Route path="/" element={<Home />} />
           <Route path="/profil" element={<Profil />} />

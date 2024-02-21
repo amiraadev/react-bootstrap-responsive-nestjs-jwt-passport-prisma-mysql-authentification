@@ -102,14 +102,15 @@ body {
 	transition: opacity 0.2s ease-in-out;
 	width: 100%;
 	border: 2px solid var(--bs-border-color);
-	color: var(--body-color);
+	color: var(--text-color) ;
 	min-height: calc(1.5em + 1rem + calc(var(--bs-border-width) * 2));
 	padding: 0.5rem 1rem;
 	font-size: 1.25rem;
 	border-radius: var(--bs-border-radius-lg);
 }
 .class-button:hover {
-	opacity: 0.6;
+	opacity: 0.7;
+	color :var(--modal-color)
 }
 .background-green {
 	background-color: var(--primary-color);

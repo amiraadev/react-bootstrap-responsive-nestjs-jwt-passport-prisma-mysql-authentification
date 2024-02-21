@@ -27,7 +27,6 @@ const Button: React.FC<ButtonProps> = ({
 			class-button
       ${outline ? "background-white" : "background-green"}
       ${outline ? "border-black" : "background-green"}
-      ${outline ? "text-black" : "text-white"}
       ${small ? "text-small" : "text-med"}
       ${small ? "font-light" : "font-semibold"}
       ${small ? "border-[1px]" : "border-2"}
