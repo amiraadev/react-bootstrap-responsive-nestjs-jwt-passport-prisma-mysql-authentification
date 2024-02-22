@@ -96,7 +96,7 @@ function LoginPage() {
 									{formik.touched.email && formik.errors.email ? (
 										<div className='text-danger px-2'>{formik.errors.email}</div>
 									) : null}
-									<Form.Group className='mt-3'>
+									<Form.Group className='mt-3 mb-4'>
 										<Form.Control
 											size='lg'
 											type='password'

@@ -15,15 +15,17 @@ const Navbar1 = () => {
 	return (
 		<Navbar className='bg-body-tertiary justify-content-between'>
 			<Form>
-			<img src='./roundesk-logo.png' className='logo-img' />
+				<img src='./roundesk-logo.png' className='logo-img' />
 			</Form>
 			<Form>
 				<Row>
-					<DarkMode />
-					<Col>
+					<Col style={{backgroundColor:"red"}}>
+						<DarkMode />
+					</Col>
+					<Col style={{backgroundColor:"yellow"}}>
 						<Button type='submit' label='submit' onClick={() => {}} />
 					</Col>
-					<Col>
+					<Col style={{backgroundColor:"red"}}>
 						<Button
 							outline={true}
 							type='submit'

@@ -89,7 +89,7 @@ function RegisterPage() {
 										<Form.Control
 											size='lg'
 											placeholder='Username'
-											name="username"
+											name='username'
 											required
 											onChange={formik.handleChange}
 											onBlur={formik.handleBlur}
@@ -100,7 +100,7 @@ function RegisterPage() {
 											{formik.errors.username}
 										</div>
 									) : null}
-									 <Form.Group className='mt-3'>
+									<Form.Group className='mt-3'>
 										<Form.Control
 											size='lg'
 											placeholder='Email'
@@ -119,11 +119,10 @@ function RegisterPage() {
 										<Form.Control
 											size='lg'
 											type='password'
-											name="password"
+											name='password'
 											placeholder='Password'
 											required
 											onChange={formik.handleChange}
-											
 										/>
 									</Form.Group>
 									{formik.touched.password && formik.errors.password ? (
@@ -131,11 +130,11 @@ function RegisterPage() {
 											{formik.errors.password}
 										</div>
 									) : null}
-									<Form.Group className='mt-3'>
+									<Form.Group className='mt-3 mb-3'>
 										<Form.Control
 											size='lg'
 											type='password'
-											name="confirmPassword"
+											name='confirmPassword'
 											placeholder='Confirm Password'
 											required
 											onChange={formik.handleChange}
