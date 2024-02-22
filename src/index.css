@@ -87,6 +87,7 @@ body {
 .logo-img {
 	max-width: 150px; /* Adjust as needed */
 	height: auto; /* Preserve aspect ratio */
+	cursor: pointer;
 }
 
 .react-icon-class {
@@ -113,18 +114,20 @@ body {
 	opacity: 0.8;
 	transition: opacity 0.2s ease-in-out;
 	width: 100%;
-	border: 2px solid var(--bs-border-color);
+	border: 2px solid #028809;
 	color: var(--text-color) ;
 	min-height: calc(1.5em + 1rem + calc(var(--bs-border-width) * 2));
 	padding: 0.5rem 1rem;
 	font-size: 1.25rem;
 	border-radius: var(--bs-border-radius-lg);
+	margin: 2px;
 }
 .class-button:hover {
 	opacity: 0.7;
 	color :var(--modal-color)
 }
 .class-button-outline {
+	
 	position: relative;
 	opacity: 0.7;
 	cursor: not-allowed;
@@ -138,6 +141,8 @@ body {
 	padding: 0.5rem 1rem;
 	font-size: 1.25rem;
 	border-radius: var(--bs-border-radius-lg);
+	margin: 2px;
+
 }
 .class-button-outline:hover {
 	opacity: 0.7;
@@ -166,6 +171,10 @@ body {
 }
 .text-med{
 	font-size:medium;
+}
+
+.dark-mode-class{
+	margin-right: 20px;
 }
 
 /*------------ For small screens------------*/
