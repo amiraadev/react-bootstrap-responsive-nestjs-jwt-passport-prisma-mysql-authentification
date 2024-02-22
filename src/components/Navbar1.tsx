@@ -19,13 +19,11 @@ const Navbar1 = () => {
 			</Form>
 			<Form>
 				<Row>
-					<Col style={{backgroundColor:"red"}}>
+					<Col className="p-1">
 						<DarkMode />
 					</Col>
-					<Col style={{backgroundColor:"yellow"}}>
+					<Col  className='d-flex flex'>
 						<Button type='submit' label='submit' onClick={() => {}} />
-					</Col>
-					<Col style={{backgroundColor:"red"}}>
 						<Button
 							outline={true}
 							type='submit'
