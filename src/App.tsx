@@ -22,23 +22,23 @@ function App() {
 	return (
 		<Router>
 			<Navbar1 />
-			{/* <Container fluid className="min-vh-100 d-flex  flex-column justify-content-between"> */}
-			{/* <Container> */}
-				{/* <Row> */}
+			<Container fluid className="min-vh-100 d-flex  flex-column justify-content-between">
+				<Row>
 					<Routes>
-						{/* <Route path='/login' element={<LoginPage />} />
-						<Route path='/register' element={<RegisterPage />} /> */}
+
+						<Route path='/login' element={<LoginPage />} />
+						<Route path='/register' element={<RegisterPage />} />
 						<Route element={<ProtectedRoutes />}>
 							<Route path='/' element={<Home />} />
 							<Route path='/profile' element={<Profile />} />
 						</Route>
 						/
 					</Routes>
-				{/* </Row> */}
-				{/* <Row fluid> */}
-					{/* <Footer /> */}
-				{/* </Row> */}
-			{/* </Container> */}
+				</Row>
+				<Row fluid>
+					<Footer />
+				</Row>
+			</Container>
 		</Router>
 	);
 }
