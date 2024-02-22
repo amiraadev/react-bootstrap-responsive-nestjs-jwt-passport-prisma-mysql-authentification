@@ -1,18 +1,16 @@
 /** @format */
 
-// /** @format */
-
-import Button from "./Button";
-import Navbar from "react-bootstrap/Navbar";
-import Form from "react-bootstrap/Form";
-import DarkMode from "./DarkMode/DarkMode";
-
 import useThemeStore from "../stores/themeStore";
 import { useNavigate } from "react-router-dom";
 
+import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
-import NavDropdown from "react-bootstrap/NavDropdown";
-const Navbar1 = () => {
+import Navbar from "react-bootstrap/Navbar";
+import Button from "./Button";
+
+import DarkMode from "./DarkMode/DarkMode";
+
+function CollapsibleExample() {
 	const navigate = useNavigate();
 	const { isDarkMode } = useThemeStore();
 	return (
@@ -22,35 +20,40 @@ const Navbar1 = () => {
 			className={`justify-content-between `}
 			collapseOnSelect
 			expand='lg'>
-			<Form>
-				<img
-					src='./roundesk-logo.png'
-					alt='alt'
-					className='logo-img'
-					onClick={() => {
-						navigate("/");
-					}}
-				/>
-			</Form>
-			<Form>
+			<Container>
+				<Navbar.Brand href='#home'>
+					<img
+						src='./roundesk-logo.png'
+						alt='alt'
+						className='logo-img'
+						onClick={() => {
+							navigate("/");
+						}}
+					/>
+				</Navbar.Brand>
+				<DarkMode />
+
 				<Navbar.Toggle aria-controls='responsive-navbar-nav' />
 				<Navbar.Collapse id='responsive-navbar-nav'>
-					<div className='d-flex justify-content-center'>
-						<div className='d-flex align-items-center dark-mode-class'>
-							<DarkMode />
-						</div>
-						<Button
-							outline={true}
-							type='submit'
-							label='submit'
-							onClick={() => {}}
-						/>{" "}
-						<Button type='submit' label='submit' onClick={() => {}} />
-					</div>
+					<Nav className='me-auto'></Nav>
+					<Nav>
+						<Nav.Link eventKey={2} href='#memes'></Nav.Link>
+						<Nav.Link href='#deets'>
+							<Button
+								outline={true}
+								type='submit'
+								label='submit'
+								onClick={() => {}}
+							/>
+						</Nav.Link>
+						<Nav.Link eventKey={2} href='#memes'>
+							<Button type='submit' label='submit' onClick={() => {}} />
+						</Nav.Link>
+					</Nav>
 				</Navbar.Collapse>
-			</Form>
+			</Container>
 		</Navbar>
 	);
-};
+}
 
-export default Navbar1;
+export default CollapsibleExample;
