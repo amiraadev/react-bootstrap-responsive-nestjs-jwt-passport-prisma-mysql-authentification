@@ -1,9 +1,6 @@
 /** @format */
 
-import React from "react";
 import "./footer.css";
-import Button from "react-bootstrap/Button";
-import Navbar from "react-bootstrap/Navbar";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
@@ -19,7 +16,7 @@ const Footer = () => {
 	const { isDarkMode } = useThemeStore();
 	return (
 		<>
-			<Container fluid className={`${isDarkMode ? "bg-dark" : "bg-light "} footer-class`}   style={{backgroundColor:"yellow"}}>
+			<Container fluid className={`${isDarkMode ? "bg-dark" : "bg-light "}`}   >
 				<Row className='py-3' >
 					<Col sm className='text-center ft-1'>
 						<h3>

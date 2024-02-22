@@ -3,7 +3,7 @@
 import React from "react";
 import { IconType } from "react-icons";
 
-type ButtonType = "submit" | "reset" | "button" | undefined ;
+type ButtonType = "submit" | "reset" | "button" | undefined;
 
 interface ButtonProps {
 	label: string;
@@ -21,20 +21,16 @@ const Button: React.FC<ButtonProps> = ({
 	outline,
 	small,
 	icon: Icon,
-	type
+	type,
 }) => {
 	return (
 		<button
 			onClick={onClick}
 			disabled={disabled}
 			type={type}
-			className={`
-			class-button
-      ${outline ? "background-white" : "background-green"}
-      ${outline ? "border-black" : "background-green"}
+			className={`		
+      ${outline ? "class-button-outline" : "class-button"}
       ${small ? "text-small" : "text-med"}
-      ${small ? "font-light" : "font-semibold"}
-      ${small ? "border-[1px]" : "border-2"}
       `}>
 			{label} {Icon && <Icon size={24} className='absolute left-4 top-3' />}
 		</button>
