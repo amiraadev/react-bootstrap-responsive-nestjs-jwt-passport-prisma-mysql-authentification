@@ -32,10 +32,7 @@ const Footer = () => {
 					</Col>
 					<Col sm className='d-flex justify-content-center align-items-center'>
 						<div>
-							<Link
-								to='https://github.com/amiraadev'
-								target='_blank'
-								rel='noopener noreferrer'>
+							<Link to='/email'>
 								<MdEmail className='react-icon-class' />
 							</Link>
 							<Link

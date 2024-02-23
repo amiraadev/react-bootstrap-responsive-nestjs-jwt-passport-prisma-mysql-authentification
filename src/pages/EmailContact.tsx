@@ -19,6 +19,9 @@ import Col from "react-bootstrap/Col";
 
 import Button from "../components/Button";
 
+import React, { useRef } from "react";
+import emailjs from "@emailjs/browser";
+
 function EmailContact() {
 	const [ok, setOk] = useState(false);
 	const navigate = useNavigate();
@@ -65,6 +68,29 @@ function EmailContact() {
 		},
 	});
 
+	const form = useRef<HTMLFormElement>(null);
+
+	const sendEmail = (e: React.FormEvent<HTMLFormElement>) => {
+		e.preventDefault();
+
+		// Replace placeholders with your actual values
+		const YOUR_SERVICE_ID = "your-service-id";
+		const YOUR_TEMPLATE_ID = "your-template-id";
+		const YOUR_PUBLIC_KEY = "your-public-key";
+		if (form.current) {
+			emailjs
+				.sendForm(YOUR_SERVICE_ID, YOUR_TEMPLATE_ID, form.current, {
+					publicKey: YOUR_PUBLIC_KEY,
+				})
+				.then(() => {
+					console.log("Email sent successfully!");
+				})
+				.catch((error) => {
+					console.error("Error sending email:", error.text);
+				});
+		}
+	};
+
 	return (
 		<Container className={` my-3 `}>
 			<Row>
@@ -77,7 +103,7 @@ function EmailContact() {
 						<Card.Body
 							className={`${isDarkMode ? "bg-dark dark-modal" : "bg-light"} `}>
 							<Card.Title className='text-center'>
-								<h1>Send Email</h1>
+								<h1>Send email</h1>
 							</Card.Title>
 							<Card.Text
 								className={`${
@@ -87,7 +113,7 @@ function EmailContact() {
 								} `}>
 								Login to your account
 							</Card.Text>
-							<Form className='px-5' onSubmit={formik.handleSubmit}>
+							<Form className='px-5' ref={form} onSubmit={sendEmail}>
 								<fieldset>
 									<Form.Group className='mt-3'>
 										<Form.Control
@@ -119,6 +145,17 @@ function EmailContact() {
 											value={formik.values.password}
 											required
 										/>
+									</Form.Group>
+									{formik.touched.password && formik.errors.password ? (
+										<div className='text-danger px-2'>
+											{formik.errors.password}
+										</div>
+									) : null}
+									<Form.Group
+										className='mb-3'
+										controlId='exampleForm.ControlTextarea1'>
+										<Form.Label>Example textarea</Form.Label>
+										<Form.Control as='textarea' rows={3} />
 									</Form.Group>
 									{formik.touched.password && formik.errors.password ? (
 										<div className='text-danger px-2'>

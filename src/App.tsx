@@ -30,10 +30,10 @@ function App() {
 					<Routes>
 						<Route path='/login' element={<LoginPage />} />
 						<Route path='/register' element={<RegisterPage />} />
+						<Route path='/email' element={<EmailContact />} />
 						<Route element={<ProtectedRoutes />}>
 							<Route path='/' element={<Home />} />
 							<Route path='/profile' element={<Profile />} />
-							<Route path='/email' element={<EmailContact />} />
 						</Route>
 						/
 					</Routes>
