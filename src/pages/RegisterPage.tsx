@@ -9,6 +9,7 @@ import { useFormik } from "formik";
 import * as Yup from "yup";
 
 import userStatusService from "../stores/userStatusStore";
+import useThemeStore from "../stores/themeStore";
 
 import Form from "react-bootstrap/Form";
 import Card from "react-bootstrap/Card";
@@ -18,6 +19,7 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 
 function RegisterPage() {
+	const { isDarkMode } = useThemeStore();
 	const [ok, setOk] = useState(false);
 	const navigate = useNavigate();
 	const { saveUserStatus } = userStatusService();
@@ -72,15 +74,16 @@ function RegisterPage() {
 		<Container className='my-3'>
 			<Row>
 				<Col md={{ span: 6, offset: 3 }}>
-					<Card className={`${isDarkMode ? "bg-dark" : "bg-light"} `}>
-						<Card.Header className='text-center'>
+					<Card>
+						<Card.Header
+							className={`${isDarkMode && "dark-header-style"} text-center`}>
 							<h4>Register</h4>
 						</Card.Header>
-						<Card.Body>
+						<Card.Body className={`${isDarkMode ? "bg-dark dark-modal" : "bg-light"} `}>
 							<Card.Title className='text-center'>
 								<h1>Welcome </h1>
 							</Card.Title>
-							<Card.Text className='text-muted text-center'>
+							<Card.Text  className={`${isDarkMode ? "bg-dark dark-modal text-center" : "text-muted bg-light text-center"} `} >
 								Create an account!
 							</Card.Text>
 							<Form className='px-5' onSubmit={formik.handleSubmit}>
@@ -152,7 +155,7 @@ function RegisterPage() {
 								</fieldset>
 							</Form>
 						</Card.Body>
-						<Card.Footer className='text-muted'>
+						<Card.Footer className={`${isDarkMode && "dark-header-style"} text-center text-muted`}>
 							<div className='m-3 d-flex justify-content-center align-items-center '>
 								<div>Already have an account? </div>
 								<div

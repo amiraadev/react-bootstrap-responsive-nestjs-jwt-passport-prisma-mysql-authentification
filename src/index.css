@@ -25,6 +25,7 @@
 	--grey-color: #484848;
 	--bs-border-radius-lg: 0.5rem;
 	--bs-border-width: 1px;
+	--dark-header-bg:
 }
 
 body {
@@ -38,6 +39,13 @@ body {
 	font-optical-sizing: auto;
 	font-weight: weight;
 	font-style: normal;
+}
+.dark-header-style{
+	background-color: var(--dark-header-bg) !important;
+	color:#999999 !important;
+}
+.dark-modal{
+	color:#999999 !important;
 }
 
 .bg-modal {
