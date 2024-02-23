@@ -1,14 +1,10 @@
 /** @format */
 
-import { useCallback, useState } from "react";
-import axios from "axios";
+import React, { useRef ,useCallback} from "react";
+import emailjs from "@emailjs/browser";
 
 import { useNavigate } from "react-router-dom";
 
-import { useFormik } from "formik";
-import * as Yup from "yup";
-
-import userStatusService from "../stores/userStatusStore";
 import useThemeStore from "../stores/themeStore";
 
 import Form from "react-bootstrap/Form";
@@ -19,64 +15,15 @@ import Col from "react-bootstrap/Col";
 
 import Button from "../components/Button";
 
-import React, { useRef } from "react";
-import emailjs from "@emailjs/browser";
 
-import useSendEmail from "../hooks/useSendEmail ";
-
-interface emailjsProperties {
-	username: string;
-	email: string;
-	message: string;
-}
 function EmailContact() {
-	const [username, setUsername] = useState("");
-	const [email, setEmail] = useState("");
-	const [message, setMessage] = useState("");
 
 	const navigate = useNavigate();
-	const { saveUserStatus } = userStatusService();
 	const { isDarkMode } = useThemeStore();
 
 	const Toggle = useCallback(() => {
 		navigate("/register");
 	}, []);
-
-	const formik = useFormik({
-		initialValues: {
-			user_name: "",
-			email: "",
-			message: "",
-		},
-		validationSchema: Yup.object({
-			user_name: Yup.string().required("Required field"),
-			email: Yup.string()
-				.email("Invalid email address")
-				.required("Required field"),
-			message: Yup.string().required("Required field"),
-		}),
-		onSubmit: async (values) => {
-			console.log("hello");
-			// await sendEmail(values)
-			// const {  user_name, email, message } = values;
-			// try {
-			// 	const response = await axios.post(
-			// 		"http://localhost:5000/auth/signin",
-			// 		{  user_name, email, message }
-			// 		//withCredentials:true :==> to allow this request to get credentials from that API Endpoint.
-			// 		// { withCredentials: true }
-			// 	);
-			// 	console.log("===>", response);
-			// 	console.log("i===>", response.data.id);
-			// 	saveUserStatus(true);
-			// 	setOk(true);
-			// 	navigate("/profile");
-			// 	return response.data;
-			// } catch (error) {
-			// 	console.log(error);
-			// }
-		},
-	});
 
 	const form = useRef<HTMLFormElement>(null);
 
@@ -114,7 +61,7 @@ function EmailContact() {
 						<Card.Body
 							className={`${isDarkMode ? "bg-dark dark-modal" : "bg-light"} `}>
 							<Card.Title className='text-center'>
-								<h1>Send email</h1>
+								<h1>Send us a message</h1>
 							</Card.Title>
 							<Card.Text
 								className={`${
@@ -122,7 +69,7 @@ function EmailContact() {
 										? "bg-dark dark-modal text-center"
 										: "text-muted bg-light text-center"
 								} `}>
-								Login to your account
+								We'd love to hear from you!
 							</Card.Text>
 							<Form className='px-5' ref={form} onSubmit={sendEmail}>
 								<fieldset>
@@ -145,11 +92,6 @@ function EmailContact() {
 											required
 										/>
 									</Form.Group>
-									{formik.touched.email && formik.errors.email ? (
-										<div className='text-danger px-2'>
-											{formik.errors.email}
-										</div>
-									) : null}
 									<Form.Group className='mt-3 mb-3'>
 										<Form.Control
 											as='textarea'
@@ -161,26 +103,16 @@ function EmailContact() {
 											rows={3}
 										/>
 									</Form.Group>
-									{formik.touched.message && formik.errors.message ? (
-										<div className='text-danger px-2'>
-											{formik.errors.message}
-										</div>
-									) : null}
 									<Button type='submit' label='submit' onClick={() => {}} />
 								</fieldset>
 							</Form>
 						</Card.Body>
-						<Card.Footer
+                        <Card.Footer
 							className={`${
 								isDarkMode ? "dark-header-style" : "text-muted"
 							} text-center `}>
 							<div className='m-3 d-flex justify-content-center align-items-center '>
-								<div>First Time using roundstack? </div>
-								<div
-									onClick={Toggle}
-									className='fw-light pointer-on-hover p-1 div-on-hover'>
-									Create an account
-								</div>
+								<div>Help us improve by leaving your feedback </div>
 							</div>
 						</Card.Footer>
 					</Card>
