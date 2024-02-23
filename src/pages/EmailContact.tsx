@@ -22,8 +22,18 @@ import Button from "../components/Button";
 import React, { useRef } from "react";
 import emailjs from "@emailjs/browser";
 
+import useSendEmail from "../hooks/useSendEmail ";
+
+interface emailjsProperties {
+	username: string;
+	email: string;
+	message: string;
+}
 function EmailContact() {
-	const [ok, setOk] = useState(false);
+	const [username, setUsername] = useState("");
+	const [email, setEmail] = useState("");
+	const [message, setMessage] = useState("");
+
 	const navigate = useNavigate();
 	const { saveUserStatus } = userStatusService();
 	const { isDarkMode } = useThemeStore();
@@ -34,37 +44,37 @@ function EmailContact() {
 
 	const formik = useFormik({
 		initialValues: {
+			user_name: "",
 			email: "",
-			password: "",
+			message: "",
 		},
 		validationSchema: Yup.object({
+			user_name: Yup.string().required("Required field"),
 			email: Yup.string()
 				.email("Invalid email address")
 				.required("Required field"),
-			password: Yup.string()
-				.min(6, "Password must be at least 6 characters")
-				.required("Required field"),
+			message: Yup.string().required("Required field"),
 		}),
 		onSubmit: async (values) => {
 			console.log("hello");
-
-			const { email, password } = values;
-			try {
-				const response = await axios.post(
-					"http://localhost:5000/auth/signin",
-					{ email, password }
-					//withCredentials:true :==> to allow this request to get credentials from that API Endpoint.
-					// { withCredentials: true }
-				);
-				console.log("===>", response);
-				console.log("i===>", response.data.id);
-				saveUserStatus(true);
-				setOk(true);
-				navigate("/profile");
-				return response.data;
-			} catch (error) {
-				console.log(error);
-			}
+			// await sendEmail(values)
+			// const {  user_name, email, message } = values;
+			// try {
+			// 	const response = await axios.post(
+			// 		"http://localhost:5000/auth/signin",
+			// 		{  user_name, email, message }
+			// 		//withCredentials:true :==> to allow this request to get credentials from that API Endpoint.
+			// 		// { withCredentials: true }
+			// 	);
+			// 	console.log("===>", response);
+			// 	console.log("i===>", response.data.id);
+			// 	saveUserStatus(true);
+			// 	setOk(true);
+			// 	navigate("/profile");
+			// 	return response.data;
+			// } catch (error) {
+			// 	console.log(error);
+			// }
 		},
 	});
 
@@ -73,10 +83,10 @@ function EmailContact() {
 	const sendEmail = (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
 
-		// Replace placeholders with your actual values
-		const YOUR_SERVICE_ID = "your-service-id";
-		const YOUR_TEMPLATE_ID = "your-template-id";
-		const YOUR_PUBLIC_KEY = "your-public-key";
+		const YOUR_SERVICE_ID = "service_ow2tgpc";
+		const YOUR_TEMPLATE_ID = "template_7cnckpx";
+		const YOUR_PUBLIC_KEY = "0RyfDRxda55zTmthL";
+
 		if (form.current) {
 			emailjs
 				.sendForm(YOUR_SERVICE_ID, YOUR_TEMPLATE_ID, form.current, {
@@ -84,8 +94,9 @@ function EmailContact() {
 				})
 				.then(() => {
 					console.log("Email sent successfully!");
+                    form.current!.reset();
 				})
-				.catch((error) => {
+				.catch((error: any) => {
 					console.error("Error sending email:", error.text);
 				});
 		}
@@ -115,16 +126,22 @@ function EmailContact() {
 							</Card.Text>
 							<Form className='px-5' ref={form} onSubmit={sendEmail}>
 								<fieldset>
+									<Form.Group className='mt-3 mb-4'>
+										<Form.Control
+											size='lg'
+											className='form-control'
+											placeholder='username'
+											name='user_name'
+											required
+										/>
+									</Form.Group>
 									<Form.Group className='mt-3'>
 										<Form.Control
 											size='lg'
 											type='email'
 											className='form-control'
 											placeholder='Enter email'
-											id='email'
 											name='email'
-											onChange={formik.handleChange}
-											value={formik.values.email}
 											required
 										/>
 									</Form.Group>
@@ -133,33 +150,20 @@ function EmailContact() {
 											{formik.errors.email}
 										</div>
 									) : null}
-									<Form.Group className='mt-3 mb-4'>
+									<Form.Group className='mt-3 mb-3'>
 										<Form.Control
+											as='textarea'
 											size='lg'
-											type='password'
 											className='form-control'
-											placeholder='Enter password'
-											id='password'
-											name='password'
-											onChange={formik.handleChange}
-											value={formik.values.password}
+											placeholder='Enter message'
+											name='message'
 											required
+											rows={3}
 										/>
 									</Form.Group>
-									{formik.touched.password && formik.errors.password ? (
+									{formik.touched.message && formik.errors.message ? (
 										<div className='text-danger px-2'>
-											{formik.errors.password}
-										</div>
-									) : null}
-									<Form.Group
-										className='mb-3'
-										controlId='exampleForm.ControlTextarea1'>
-										<Form.Label>Example textarea</Form.Label>
-										<Form.Control as='textarea' rows={3} />
-									</Form.Group>
-									{formik.touched.password && formik.errors.password ? (
-										<div className='text-danger px-2'>
-											{formik.errors.password}
+											{formik.errors.message}
 										</div>
 									) : null}
 									<Button type='submit' label='submit' onClick={() => {}} />
