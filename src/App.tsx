@@ -7,14 +7,14 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import ProtectedRoutes from "./ProtectedRoutes";
 
 import Footer from "./components/footer/Footer";
-import Navbar1 from "./components/Navbar1";
+import Navbar from "./components/Navbar";
 
 import Home from "./pages/Home";
 import RegisterPage from "./pages/RegisterPage";
 import LoginPage from "./pages/LoginPage";
 import Profile from "./pages/Profile";
 import Container from "react-bootstrap/Container";
-import { Col, Row } from "react-bootstrap";
+import {  Row } from "react-bootstrap";
 import EmailContact from "./pages/EmailContact";
 
 axios.defaults.withCredentials = true;
@@ -22,7 +22,7 @@ axios.defaults.withCredentials = true;
 function App() {
 	return (
 		<Router>
-			<Navbar1 />
+			<Navbar />
 			<Container
 				fluid
 				className='min-vh-100 d-flex  flex-column justify-content-between'>
