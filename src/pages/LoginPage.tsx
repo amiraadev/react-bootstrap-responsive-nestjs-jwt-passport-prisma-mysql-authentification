@@ -70,14 +70,21 @@ function LoginPage() {
 			<Row>
 				<Col md={{ span: 6, offset: 3 }}>
 					<Card className={`${isDarkMode ? "bg-dark" : "bg-light"} `}>
-						<Card.Header className={`${isDarkMode && "dark-header-style"} text-center`}>
+						<Card.Header
+							className={`${isDarkMode && "dark-header-style"} text-center`}>
 							<h4>Login</h4>
 						</Card.Header>
-						<Card.Body className={`${isDarkMode ? "bg-dark dark-modal" : "bg-light"} `}>
+						<Card.Body
+							className={`${isDarkMode ? "bg-dark dark-modal" : "bg-light"} `}>
 							<Card.Title className='text-center'>
 								<h1>Welcome back</h1>
 							</Card.Title>
-							<Card.Text className={`${isDarkMode ? "bg-dark dark-modal text-center" : "text-muted bg-light text-center"} `} >
+							<Card.Text
+								className={`${
+									isDarkMode
+										? "bg-dark dark-modal text-center"
+										: "text-muted bg-light text-center"
+								} `}>
 								Login to your account
 							</Card.Text>
 							<Form className='px-5' onSubmit={formik.handleSubmit}>
@@ -122,7 +129,10 @@ function LoginPage() {
 								</fieldset>
 							</Form>
 						</Card.Body>
-						<Card.Footer  className={`${isDarkMode && "dark-header-style"} text-center text-muted`}>
+						<Card.Footer
+							className={`${
+								isDarkMode ? "dark-header-style" : "text-muted"
+							} text-center `}>
 							<div className='m-3 d-flex justify-content-center align-items-center '>
 								<div>First Time using roundstack? </div>
 								<div

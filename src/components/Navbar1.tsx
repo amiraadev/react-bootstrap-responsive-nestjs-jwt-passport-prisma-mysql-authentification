@@ -42,12 +42,12 @@ function CollapsibleExample() {
 							<Button
 								outline={true}
 								type='submit'
-								label='submit'
-								onClick={() => {}}
+								label='Sign Up'
+								onClick={() => {navigate("/register")}}
 							/>
 						</Nav.Link>
 						<Nav.Link eventKey={2} href='#memes'>
-							<Button type='submit' label='submit' onClick={() => {}} />
+							<Button type='submit' label='Sign In' onClick={() => {navigate("/login")}} />
 						</Nav.Link>
 					</Nav>
 				</Navbar.Collapse>

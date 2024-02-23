@@ -15,6 +15,7 @@ import LoginPage from "./pages/LoginPage";
 import Profile from "./pages/Profile";
 import Container from "react-bootstrap/Container";
 import { Col, Row } from "react-bootstrap";
+import EmailContact from "./pages/EmailContact";
 
 axios.defaults.withCredentials = true;
 
@@ -32,6 +33,7 @@ function App() {
 						<Route element={<ProtectedRoutes />}>
 							<Route path='/' element={<Home />} />
 							<Route path='/profile' element={<Profile />} />
+							<Route path='/email' element={<EmailContact />} />
 						</Route>
 						/
 					</Routes>
