@@ -72,7 +72,7 @@ function RegisterPage() {
 		<Container className='my-3'>
 			<Row>
 				<Col md={{ span: 6, offset: 3 }}>
-					<Card>
+					<Card className={`${isDarkMode ? "bg-dark" : "bg-light"} `}>
 						<Card.Header className='text-center'>
 							<h4>Register</h4>
 						</Card.Header>

@@ -9,6 +9,7 @@ import { useFormik } from "formik";
 import * as Yup from "yup";
 
 import userStatusService from "../stores/userStatusStore";
+import useThemeStore from "../stores/themeStore";
 
 import Form from "react-bootstrap/Form";
 import Card from "react-bootstrap/Card";
@@ -22,6 +23,7 @@ function LoginPage() {
 	const [ok, setOk] = useState(false);
 	const navigate = useNavigate();
 	const { saveUserStatus } = userStatusService();
+	const { isDarkMode } = useThemeStore();
 
 	const Toggle = useCallback(() => {
 		navigate("/register");
@@ -64,10 +66,10 @@ function LoginPage() {
 	});
 
 	return (
-		<Container className='my-3 '>
+		<Container className={` my-3 `}>
 			<Row>
 				<Col md={{ span: 6, offset: 3 }}>
-					<Card>
+					<Card className={`${isDarkMode ? "bg-dark" : "bg-light"} `}>
 						<Card.Header className='text-center'>
 							<h4>Login</h4>
 						</Card.Header>
@@ -94,7 +96,9 @@ function LoginPage() {
 										/>
 									</Form.Group>
 									{formik.touched.email && formik.errors.email ? (
-										<div className='text-danger px-2'>{formik.errors.email}</div>
+										<div className='text-danger px-2'>
+											{formik.errors.email}
+										</div>
 									) : null}
 									<Form.Group className='mt-3 mb-4'>
 										<Form.Control
@@ -110,7 +114,9 @@ function LoginPage() {
 										/>
 									</Form.Group>
 									{formik.touched.password && formik.errors.password ? (
-										<div className='text-danger px-2'>{formik.errors.password}</div>
+										<div className='text-danger px-2'>
+											{formik.errors.password}
+										</div>
 									) : null}
 									<Button type='submit' label='submit' onClick={() => {}} />
 								</fieldset>
