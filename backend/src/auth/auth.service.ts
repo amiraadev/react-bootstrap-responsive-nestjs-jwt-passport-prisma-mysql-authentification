@@ -18,12 +18,6 @@ const fakeUsers = [
 export class AuthService {
 
 constructor(private jwtService:JwtService ){}
-
-  testService() {
-    console.log("success");
-    
-  }
-
   validateUser({username,password}: AuthPayloadDto) {
     
      const findUser = fakeUsers.find((user) => user.username === username);
