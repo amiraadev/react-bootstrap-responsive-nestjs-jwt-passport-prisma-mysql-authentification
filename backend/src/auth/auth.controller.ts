@@ -3,13 +3,14 @@ import { AuthService } from './auth.service';
 import { LocalGuard } from './guards/local.guard';
 import { Request } from 'express';
 import { JwtAuthGuard } from './guards/jwt.guard';
+import { SignUpDto } from './dto/auth.dto';
 
 @Controller('/auth')
 export class AuthController {
     constructor(private readonly usersService: AuthService) {}
 
   @Post('register')
-  register(@Body() req: Request) {
+  register(@Body() signUpDto: SignUpDto) {
     return req.user;
   }
   @Post('login')
