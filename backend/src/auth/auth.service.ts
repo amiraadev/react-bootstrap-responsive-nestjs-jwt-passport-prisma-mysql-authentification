@@ -5,7 +5,7 @@ import { JwtService } from '@nestjs/jwt';
 const fakeUsers = [
   {
     id: 1,
-    username: 'anson',
+    username: 'mounir',
     password: 'password',
   },
   {
@@ -19,14 +19,20 @@ export class AuthService {
 
 constructor(private jwtService:JwtService ){}
 
+  testService() {
+    console.log("success");
+    
+  }
+
   validateUser({username,password}: AuthPayloadDto) {
+    
      const findUser = fakeUsers.find((user) => user.username === username);
      if(!findUser){
         return null;
      }
      if(password === findUser.password){
-        const {password,...user} = findUser;
-       return this.jwtService.sign(user)
+        const {password,...userWithoutPassord} = findUser;
+       return this.jwtService.sign(userWithoutPassord)
      }
   }
 }
