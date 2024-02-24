@@ -11,8 +11,9 @@ export class AuthController {
 
   @Post('register')
   register(@Body() signUpDto: SignUpDto) {
-    return req.user;
+    return this.usersService.register(signUpDto);
   }
+  
   @Post('login')
   @UseGuards(LocalGuard)
   login(@Req() req: Request) {
