@@ -32,7 +32,7 @@ export class AuthService {
     });
 
     const { hashedPassword, ...userWithoutPassword } = user;
-    return userWithoutPassword;
+    return this.jwtService.sign(userWithoutPassword);
   }
 
   async validateUser({ email, password }: SignInDto) {
@@ -50,11 +50,11 @@ export class AuthService {
       throw new HttpException('Invalid Credentials', 400);
     }
     const { hashedPassword, ...userWithoutPassword } = user;
-    return userWithoutPassword;
-
-
+    return this.jwtService.sign(userWithoutPassword);
   }
+
 }
+
 
 
 
