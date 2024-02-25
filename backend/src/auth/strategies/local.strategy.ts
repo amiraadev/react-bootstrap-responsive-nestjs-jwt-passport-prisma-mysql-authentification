@@ -14,11 +14,10 @@ export class LocalStrategy extends PassportStrategy(Strategy) {
   }
 
   validate(email: string, password: string) {
-    console.log('Inside LocalStrategyyyyyyyy');
-    // this.authService.testUser();
-    // const user = this.authService.validateUser({ username, password });
-    // if (!user) throw new UnauthorizedException();
-    // return user;
+    console.log('Inside Local strategy');
+    const user = this.authService.validateUser({ email, password });
+    if (!user) throw new UnauthorizedException();
+    return user;
   }
 }
 
