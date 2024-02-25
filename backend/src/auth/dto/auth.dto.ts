@@ -24,3 +24,8 @@ export class SignInDto {
   @IsString()
   password: string;
 }
+export class UserPayloadDto {
+  username: string;
+
+  password: string;
+}

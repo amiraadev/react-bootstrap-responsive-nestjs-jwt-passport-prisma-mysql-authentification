@@ -1,4 +1,4 @@
-import { HttpException, Injectable } from '@nestjs/common';
+ import { HttpException, Injectable } from '@nestjs/common';
 import { SignInDto, SignUpDto } from './dto/auth.dto';
 import { JwtService } from '@nestjs/jwt';
 import { PrismaService } from 'prisma/prisma.service';
@@ -55,3 +55,6 @@ export class AuthService {
 
   }
 }
+
+
+
