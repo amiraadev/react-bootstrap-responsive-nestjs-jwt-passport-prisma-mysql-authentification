@@ -7,10 +7,13 @@ import { SignInDto } from '../dto/auth.dto';
 @Injectable()
 export class LocalStrategy extends PassportStrategy(Strategy) {
   constructor(private authService: AuthService) {
-    super();
+    super({
+      usernameField: 'email',
+      passwordField: 'password',
+    });
   }
 
-  validate(username: string, password: string) {
+  validate(email: string, password: string) {
     console.log('Inside LocalStrategyyyyyyyy');
     // this.authService.testUser();
     // const user = this.authService.validateUser({ username, password });
