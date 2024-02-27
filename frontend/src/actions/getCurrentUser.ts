@@ -2,7 +2,7 @@
 
 import { jwtDecode } from "jwt-decode";
 
-interface User {
+export interface User {
 	id: string;
 	username: string;
 	email: string;
@@ -20,7 +20,6 @@ export const getCurrentUser = (): User | null => {
 
 	try {
         const decodedToken = jwtDecode<User>(token);
-		console.log(decodedToken);
 
 		const user: User = {
 			id: decodedToken.id,

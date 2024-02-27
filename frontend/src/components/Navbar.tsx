@@ -1,28 +1,27 @@
 /** @format */
 
-import useThemeStore from "../stores/themeStore";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { User, getCurrentUser } from "../../src/actions/getCurrentUser";
+import useThemeStore from "../stores/themeStore";
 
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
+
 import Navbar from "react-bootstrap/Navbar";
 import Button from "./Button";
 
 import DarkMode from "./DarkMode/DarkMode";
 
-import { getCurrentUser } from "../../src/actions/getCurrentUser";
-import { useEffect } from "react";
-
 function CollapsibleExample() {
-	useEffect(() => {
-		getCurrentUser();
-	
-	 
-	}, [])
-	
-	const User = getCurrentUser();
+	const user = getCurrentUser();
 	const navigate = useNavigate();
 	const { isDarkMode } = useThemeStore();
+	const [displayedUser, setDisplayedUser] = useState<User | null>(null); 
+
+	useEffect(() => {
+		setDisplayedUser(user); 
+	}, [user]);
 	return (
 		<Navbar
 			bg={`${isDarkMode ? "dark" : "light"}`}
@@ -48,17 +47,41 @@ function CollapsibleExample() {
 					<Nav className='me-auto'></Nav>
 					<Nav>
 						<Nav.Link eventKey={2} href='#memes'></Nav.Link>
+						{displayedUser ? (
+							<>
+								<Nav.Link href='#profile'>{displayedUser.username}</Nav.Link>
+								<Button
+									type='submit'
+									label='Sign In'
+									onClick={() => {
+										navigate("/login");
+									}}
+								/>
+							</>
+						):(
+							<>
+							
 						<Nav.Link href='#deets'>
 							<Button
 								outline={true}
 								type='submit'
 								label='Sign Up'
-								onClick={() => {navigate("/register")}}
+								onClick={() => {
+									navigate("/register");
+								}}
 							/>
 						</Nav.Link>
 						<Nav.Link eventKey={2} href='#memes'>
-							<Button type='submit' label='Sign In' onClick={() => {navigate("/login")}} />
+							<Button
+								type='submit'
+								label='Sign In'
+								onClick={() => {
+									navigate("/login");
+								}}
+							/>
 						</Nav.Link>
+							</>
+						)}
 					</Nav>
 				</Navbar.Collapse>
 			</Container>
