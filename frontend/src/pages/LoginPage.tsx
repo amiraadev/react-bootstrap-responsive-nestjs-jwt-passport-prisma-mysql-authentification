@@ -28,7 +28,6 @@ function LoginPage() {
 	const { setIsLoggedIn, setUser, setToken,token } = useAuthStore();
 	const { isDarkMode } = useThemeStore();
 
-	const user = getCurrentUser(token);
 	const Toggle = useCallback(() => {
 		navigate("/register");
 	}, []);
@@ -60,9 +59,9 @@ function LoginPage() {
 				console.log("===>", response.data);
 				setIsLoggedIn(true);
 				setToken(response.data);
+				const user = getCurrentUser(token);
 				setUser(user);
 				// saveUserStatus(true);
-				setOk(true);
 				navigate("/profile");
 				return response.data;
 			} catch (error) {

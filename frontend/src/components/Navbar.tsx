@@ -31,7 +31,9 @@ function CollapsibleExample() {
 	};
 	useEffect(() => {
 		setDisplayedUser(user);
-	}, []);
+		console.log(displayedUser);
+		
+	}, [token]);
 	return (
 		<Navbar
 			bg={`${isDarkMode ? "dark" : "light"}`}
