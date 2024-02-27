@@ -1,7 +1,7 @@
 import { Controller, Get, Post, Req, UseGuards, Body } from '@nestjs/common';
 import { AuthService } from './auth.service';
 import { LocalGuard } from './guards/local.guard';
-import { Request } from 'express';
+import { Request, Response } from 'express';
 import { JwtAuthGuard } from './guards/jwt.guard';
 import {  SignUpDto } from './dto/auth.dto';
 
@@ -28,9 +28,9 @@ export class AuthController {
     return req.user;
   }
 
-  @Get('test')
-  test() {
-    return ([{msg:"testing the connectivity of the api"}]);
+  @Post('logout')
+  logout(res: Response) {
+    return this.usersService.singOut(res);
   }
 }
 

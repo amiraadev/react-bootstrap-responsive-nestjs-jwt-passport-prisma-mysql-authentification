@@ -57,7 +57,7 @@ function LoginPage() {
 				);
 				setIsLoggedIn(true);
 				// document.cookie = `jwt=${response.data}; path=/;`;
-				Cookies.set('jwt', response.data, { expires: 1 });
+				// Cookies.set('jwt', response.data, { expires: 1 });
 
 				setToken(response.data);
 			
