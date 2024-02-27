@@ -14,6 +14,7 @@ import Button from "./Button";
 
 import DarkMode from "./DarkMode/DarkMode";
 import { useAuthStore } from "../stores/authStore";
+import Cookies from "js-cookie";
 
 function CollapsibleExample() {
 	const navigate = useNavigate();
@@ -27,6 +28,8 @@ function CollapsibleExample() {
 		setIsLoggedIn(false);
 		setUser(null);
 		setToken(null);
+		Cookies.remove('jwt');
+
 	};
 	useEffect(() => {
 		setDisplayedUser(user);

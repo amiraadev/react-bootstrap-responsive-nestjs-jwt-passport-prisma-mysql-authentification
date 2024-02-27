@@ -21,6 +21,9 @@ import Button from "../components/Button";
 import { useAuthStore } from "../stores/authStore";
 import { User, getCurrentUser } from "../actions/getCurrentUser";
 
+import Cookies from 'js-cookie';
+
+
 function LoginPage() {
 	const navigate = useNavigate();
 	const { setIsLoggedIn, setUser, setToken, token } = useAuthStore();
@@ -53,6 +56,9 @@ function LoginPage() {
 					// { withCredentials: true }
 				);
 				setIsLoggedIn(true);
+				// document.cookie = `jwt=${response.data}; path=/;`;
+				Cookies.set('jwt', response.data, { expires: 1 });
+
 				setToken(response.data);
 			
 				
