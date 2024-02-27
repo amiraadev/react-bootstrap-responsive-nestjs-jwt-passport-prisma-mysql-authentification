@@ -55,7 +55,7 @@ function LoginPage() {
 				);
 				console.log("===>", response.data);
 				console.log("i===>", response.data.id);
-				localStorage.setItem('token',response.data.token)
+				localStorage.setItem('token',response.data)
 				saveUserStatus(true);
 				setOk(true);
 				navigate("/profile");

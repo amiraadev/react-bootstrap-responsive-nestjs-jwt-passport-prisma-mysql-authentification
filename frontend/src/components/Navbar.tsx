@@ -10,7 +10,17 @@ import Button from "./Button";
 
 import DarkMode from "./DarkMode/DarkMode";
 
+import { getCurrentUser } from "../../src/actions/getCurrentUser";
+import { useEffect } from "react";
+
 function CollapsibleExample() {
+	useEffect(() => {
+		getCurrentUser();
+	
+	 
+	}, [])
+	
+	const User = getCurrentUser();
 	const navigate = useNavigate();
 	const { isDarkMode } = useThemeStore();
 	return (
