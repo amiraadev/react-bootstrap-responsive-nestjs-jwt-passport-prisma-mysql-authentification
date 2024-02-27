@@ -48,7 +48,7 @@ function LoginPage() {
 			const { email, password } = values;
 			try {
 				const response = await axios.post(
-					"http://localhost:5000/auth/signin",
+					"http://localhost:5000/auth/login",
 					{ email, password }
 					//withCredentials:true :==> to allow this request to get credentials from that API Endpoint.
 					// { withCredentials: true }

@@ -28,6 +28,11 @@ export class AuthController {
     console.log(req.user);
     return req.user;
   }
+
+  @Get('test')
+  test() {
+    return ([{msg:"testing the connectivity of the api"}]);
+  }
 }
 
 
