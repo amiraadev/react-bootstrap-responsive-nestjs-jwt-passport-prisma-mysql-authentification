@@ -1,8 +1,9 @@
- import { HttpException, Injectable } from '@nestjs/common';
+ import { BadRequestException, HttpException, Injectable } from '@nestjs/common';
 import { SignInDto, SignUpDto } from './dto/auth.dto';
 import { JwtService } from '@nestjs/jwt';
 import { PrismaService } from 'prisma/prisma.service';
 import * as bcrypt from 'bcryptjs';
+import { Request, Response } from 'express';
 
 @Injectable()
 export class AuthService {
@@ -53,6 +54,32 @@ export class AuthService {
     return this.jwtService.sign(userWithoutPassword);
   }
 
+
+  async getUser(req: Request) {
+    try {
+      const cookie = req.cookies['token'];
+      const data = await this.jwtService.verify(cookie, {
+        secret: process.env.JWT_SECRET,
+      });
+
+     
+
+      const user = await this.prismaService.user.findUnique({
+        where: { id: data.id },
+        select: { email: true }, //return only email
+      });
+
+      return user;
+    } catch (error) {
+      throw new BadRequestException('An unexpected error occurred !');
+    }
+  }
+
+
+  async singOut(res: Response) {
+    res.clearCookie('token');
+    return res.send({ message: 'Logout successfully' });
+  }
 }
 
 

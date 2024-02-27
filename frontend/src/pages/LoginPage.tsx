@@ -22,8 +22,6 @@ import { useAuthStore } from "../stores/authStore";
 import { User, getCurrentUser } from "../actions/getCurrentUser";
 
 function LoginPage() {
-	const [ok, setOk] = useState(false);
-	const [displayedUser, setDisplayedUser] = useState<User | null>(null);
 	const navigate = useNavigate();
 	const { setIsLoggedIn, setUser, setToken, token } = useAuthStore();
 	const { isDarkMode } = useThemeStore();
@@ -56,8 +54,8 @@ function LoginPage() {
 				);
 				setIsLoggedIn(true);
 				setToken(response.data);
-				const user = getCurrentUser(token);
-				setUser(user);
+			
+				
 				navigate("/profile");
 				return response.data;
 			} catch (error) {
