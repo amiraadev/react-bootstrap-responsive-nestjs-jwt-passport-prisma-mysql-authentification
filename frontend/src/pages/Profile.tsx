@@ -20,7 +20,7 @@ export default function Profile() {
 				const response = await axios.get("http://localhost:5000/auth/status", {
 					headers,
 				});
-				// console.log("===>", response);
+				 console.log("===>", response);
 				 setUser(response.data);
 			} catch (error) {
 				console.log(error);

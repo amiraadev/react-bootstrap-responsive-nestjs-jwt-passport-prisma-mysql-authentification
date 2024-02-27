@@ -51,19 +51,19 @@ function RegisterPage() {
 		onSubmit: async (values) => {
 			console.log("hello");
 
-			const { email, password } = values;
+			const {username, email, password } = values;
 			try {
 				const response = await axios.post(
-					"http://localhost:5000/auth/signin",
-					{ email, password }
+					"http://localhost:5000/auth/register",
+					{ username,email, password }
 					//withCredentials:true :==> to allow this request to get credentials from that API Endpoint.
 					// { withCredentials: true }
 				);
-				console.log("===>", response);
-				console.log("i===>", response.data.id);
-				saveUserStatus(true);
-				setOk(true);
-				navigate("/profile");
+				// console.log("===>", response);
+				// console.log("i===>", response.data.id);
+				// saveUserStatus(true);
+				// setOk(true);
+				// navigate("/profile");
 				return response.data;
 			} catch (error) {
 				console.log(error);
