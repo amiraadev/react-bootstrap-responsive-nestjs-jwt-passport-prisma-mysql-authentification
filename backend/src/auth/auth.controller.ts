@@ -3,8 +3,7 @@ import { AuthService } from './auth.service';
 import { LocalGuard } from './guards/local.guard';
 import { Request } from 'express';
 import { JwtAuthGuard } from './guards/jwt.guard';
-import { SignInDto, SignUpDto } from './dto/auth.dto';
-import { AuthGuard } from '@nestjs/passport';
+import {  SignUpDto } from './dto/auth.dto';
 
 @Controller('/auth')
 export class AuthController {
