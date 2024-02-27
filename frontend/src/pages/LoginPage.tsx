@@ -18,13 +18,17 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 
 import Button from "../components/Button";
+import { useAuthStore } from "../stores/authStore";
+import { User, getCurrentUser } from "../actions/getCurrentUser";
 
 function LoginPage() {
 	const [ok, setOk] = useState(false);
+	const [displayedUser, setDisplayedUser] = useState<User | null>(null);
 	const navigate = useNavigate();
-	const { saveUserStatus } = userStatusService();
+	const { setIsLoggedIn, setUser, setToken,token } = useAuthStore();
 	const { isDarkMode } = useThemeStore();
 
+	const user = getCurrentUser(token);
 	const Toggle = useCallback(() => {
 		navigate("/register");
 	}, []);
@@ -54,9 +58,10 @@ function LoginPage() {
 					// { withCredentials: true }
 				);
 				console.log("===>", response.data);
-				console.log("i===>", response.data.id);
-				localStorage.setItem('token',response.data)
-				saveUserStatus(true);
+				setIsLoggedIn(true);
+				setToken(response.data);
+				setUser(user);
+				// saveUserStatus(true);
 				setOk(true);
 				navigate("/profile");
 				return response.data;

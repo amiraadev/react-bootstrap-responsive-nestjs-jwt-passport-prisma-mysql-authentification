@@ -1,6 +1,7 @@
 /** @format */
 
 import { jwtDecode } from "jwt-decode";
+import { useAuthStore } from "../stores/authStore";
 
 export interface User {
 	id: string;
@@ -11,9 +12,8 @@ export interface User {
 	iat?: number | undefined;
 	exp?: number | undefined;
 }
-
-export const getCurrentUser = (): User | null => {
-	const token = localStorage.getItem("token");
+export const getCurrentUser = (token:string|null): User | null => {
+	
 	if (!token) {
 		return null;
 	}
