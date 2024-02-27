@@ -10,7 +10,8 @@ const TestAxios = () => {
 			  method: 'GET',
 			//   url: 'https://jsonplaceholder.typicode.com/users',
 			//   url: 'http://localhost:5005/api/questions',
-			  url:'https://api.publicapis.org/entries',
+			//   url:'https://api.publicapis.org/entries',
+			  url:'http://localhost:5000/auth/test',
 			  headers: {
 				'Accept': 'application/json',
 			  },

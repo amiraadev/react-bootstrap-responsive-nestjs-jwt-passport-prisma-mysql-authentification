@@ -53,8 +53,9 @@ function LoginPage() {
 					//withCredentials:true :==> to allow this request to get credentials from that API Endpoint.
 					// { withCredentials: true }
 				);
-				console.log("===>", response);
+				console.log("===>", response.data);
 				console.log("i===>", response.data.id);
+				localStorage.setItem('token',response.data.token)
 				saveUserStatus(true);
 				setOk(true);
 				navigate("/profile");
