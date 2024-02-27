@@ -25,7 +25,7 @@ function LoginPage() {
 	const [ok, setOk] = useState(false);
 	const [displayedUser, setDisplayedUser] = useState<User | null>(null);
 	const navigate = useNavigate();
-	const { setIsLoggedIn, setUser, setToken,token } = useAuthStore();
+	const { setIsLoggedIn, setUser, setToken, token } = useAuthStore();
 	const { isDarkMode } = useThemeStore();
 
 	const Toggle = useCallback(() => {
@@ -46,8 +46,6 @@ function LoginPage() {
 				.required("Required field"),
 		}),
 		onSubmit: async (values) => {
-			console.log("hello");
-
 			const { email, password } = values;
 			try {
 				const response = await axios.post(
@@ -56,12 +54,10 @@ function LoginPage() {
 					//withCredentials:true :==> to allow this request to get credentials from that API Endpoint.
 					// { withCredentials: true }
 				);
-				console.log("===>", response.data);
 				setIsLoggedIn(true);
 				setToken(response.data);
 				const user = getCurrentUser(token);
 				setUser(user);
-				// saveUserStatus(true);
 				navigate("/profile");
 				return response.data;
 			} catch (error) {

@@ -19,11 +19,10 @@ function CollapsibleExample() {
 	const navigate = useNavigate();
 	const { isDarkMode } = useThemeStore();
 	const [displayedUser, setDisplayedUser] = useState<User | null>(null);
-	const { setIsLoggedIn, setUser, setToken,token } = useAuthStore();
+	const { setIsLoggedIn, setUser, setToken, token } = useAuthStore();
 
-	
 	const user = getCurrentUser(token);
-	
+
 	const handleLogout = () => {
 		setIsLoggedIn(false);
 		setUser(null);
@@ -31,8 +30,6 @@ function CollapsibleExample() {
 	};
 	useEffect(() => {
 		setDisplayedUser(user);
-		console.log(displayedUser);
-		
 	}, [token]);
 	return (
 		<Navbar
