@@ -13,24 +13,26 @@ import RegisterPage from "./pages/RegisterPage";
 import LoginPage from "./pages/LoginPage";
 import Profile from "./pages/Profile";
 import Container from "react-bootstrap/Container";
-import {  Row } from "react-bootstrap";
+import { Row } from "react-bootstrap";
 import EmailContact from "./pages/EmailContact";
-import TestAxios from "./pages/TestAxios";
+
+import ToasterProvider from "./providers/ToasterProvider";
+import { ConfettiProvider } from "./providers/ConfettiProvider";
 
 // axios.defaults.withCredentials = true;
 
 function App() {
-	
 	return (
 		// <>hello</>
 		<Router>
 			<Navbar />
+			<ConfettiProvider />
+			<ToasterProvider />
 			<Container
 				fluid
 				className='min-vh-100 d-flex  flex-column justify-content-between'>
 				<Row>
 					<Routes>
-						<Route path='/test' element={<TestAxios />} />
 						<Route path='/login' element={<LoginPage />} />
 						<Route path='/register' element={<RegisterPage />} />
 						<Route path='/email' element={<EmailContact />} />
@@ -38,7 +40,6 @@ function App() {
 							<Route path='/' element={<Home />} />
 							<Route path='/profile' element={<Profile />} />
 						</Route>
-						
 					</Routes>
 				</Row>
 				<Row fluid>

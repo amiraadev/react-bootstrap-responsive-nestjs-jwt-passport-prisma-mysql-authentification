@@ -20,16 +20,20 @@ import Button from "../components/Button";
 import { useAuthStore } from "../stores/authStore";
 
 import Cookies from "js-cookie";
+import { useConfettiStore } from "../hooks/useConfettiStore";
+import toast from "react-hot-toast";
 
 function LoginPage() {
-	const [error, setError] = useState("");
 	const form = useRef<HTMLFormElement>(null);
 	const emailInputRef = useRef<HTMLInputElement>(null); // Ref for email input
 	const passwordInputRef = useRef<HTMLInputElement>(null);
 
 	const navigate = useNavigate();
+
 	const { setIsLoggedIn } = useAuthStore();
 	const { isDarkMode } = useThemeStore();
+	const confetti = useConfettiStore();
+
 
 	const Toggle = useCallback(() => {
 		navigate("/register");
@@ -57,12 +61,18 @@ function LoginPage() {
 				});
 				setIsLoggedIn(true);
 				// document.cookie = `jwt=${response.data}; path=/;`;
+
 				Cookies.set("jwt", response.data, { expires: 1 });
+				toast.success("Logged in successfully");
 				navigate("/profile");
+				confetti.onOpen();
+
 				return response.data;
 			} catch (error) {
 				console.log(error);
-				setError("Invalid Credentials");
+				toast.error("Invalid Credentials");
+
+				// setError("Invalid Credentials");
 				// emailInputRef.current!.focus();
 				// passwordInputRef.current!.focus();
 				form.current!.reset();
@@ -93,7 +103,6 @@ function LoginPage() {
 								Login to your account
 							</Card.Text>
 							<Form ref={form} className='px-5' onSubmit={formik.handleSubmit} >
-								<div className='text-danger px-2'>{error}</div>
 								<fieldset>
 									<Form.Group className='mt-3'>
 										<Form.Control
