@@ -33,6 +33,16 @@ function CollapsibleExample() {
 
 	};
 	useEffect(() => {
+		const jwt = Cookies.get('jwt');
+
+if (jwt) {
+  // Do something with the retrieved cookie value
+  console.log("Retrieved cookie value:", jwt);
+} else {
+  // Handle the scenario where the cookie doesn't exist
+  console.log("Cookie 'jwt' not found");
+}
+
 		setDisplayedUser(user);
 	}, [token]);
 	return (

@@ -1,7 +1,7 @@
 /** @format */
 
 import { jwtDecode } from "jwt-decode";
-import { useAuthStore } from "../stores/authStore";
+import Cookies from "js-cookie";
 
 export interface User {
 	id: string;
@@ -12,14 +12,14 @@ export interface User {
 	iat?: number | undefined;
 	exp?: number | undefined;
 }
-export const getCurrentUser = (token:string|null): User | null => {
-	
-	if (!token) {
+export const getCurrentUser = (): User | null => {
+	const jwt = Cookies.get('jwt');
+	if (!jwt) {
 		return null;
 	}
 
 	try {
-        const decodedToken = jwtDecode<User>(token);
+        const decodedToken = jwtDecode<User>(jwt);
 
 		const user: User = {
 			id: decodedToken.id,

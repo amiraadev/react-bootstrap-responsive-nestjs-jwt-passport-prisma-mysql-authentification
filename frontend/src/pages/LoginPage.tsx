@@ -52,16 +52,11 @@ function LoginPage() {
 				const response = await axios.post(
 					"http://localhost:5000/auth/login",
 					{ email, password }
-					//withCredentials:true :==> to allow this request to get credentials from that API Endpoint.
-					// { withCredentials: true }
 				);
 				setIsLoggedIn(true);
 				// document.cookie = `jwt=${response.data}; path=/;`;
-				// Cookies.set('jwt', response.data, { expires: 1 });
-
-				setToken(response.data);
-			
-				
+				 Cookies.set('jwt', response.data, { expires: 1 });
+				// setToken(response.data);			
 				navigate("/profile");
 				return response.data;
 			} catch (error) {
