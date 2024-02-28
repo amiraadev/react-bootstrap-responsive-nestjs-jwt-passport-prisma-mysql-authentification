@@ -167,7 +167,7 @@ function LoginPage() {
 								<div
 									onClick={resetPassword}
 									className='fw-light pointer-on-hover p-1 div-on-hover'>
-									Forget Password
+									Forget Password?
 								</div>
 							</div>
 						</Card.Footer>

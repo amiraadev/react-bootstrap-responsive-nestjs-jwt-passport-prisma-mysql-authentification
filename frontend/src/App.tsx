@@ -38,8 +38,8 @@ function App() {
 						<Route path='/login' element={<LoginPage />} />
 						<Route path='/register' element={<RegisterPage />} />
 						<Route path='/email' element={<EmailContact />} />
-						<Route path='/resetPassword' element={<OneTimePassword />} />
-						<Route path='/ResetPassword' element={<ResetPassword />} />
+						<Route path='/otp' element={<OneTimePassword />} />
+						<Route path='/resetPassword' element={<ResetPassword />} />
 						<Route element={<ProtectedRoutes />}>
 							<Route path='/' element={<Home />} />
 							<Route path='/profile' element={<Profile />} />
