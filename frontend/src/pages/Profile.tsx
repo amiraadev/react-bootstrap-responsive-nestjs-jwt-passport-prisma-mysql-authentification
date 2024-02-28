@@ -1,19 +1,18 @@
 /** @format */
 
-import React, { useEffect, useState } from "react";
+import { useEffect } from "react";
 import axios from "axios";
 import Cookies from "js-cookie";
-import userStatusService from "../stores/userStatusStore";
 import { useAuthStore } from "../stores/authStore";
 
 export default function Profile() {
-	const { saveUserStatus } = userStatusService();
-	const { setUser, token, user } = useAuthStore();
+	const { setUser, user } = useAuthStore();
 
 	useEffect(() => {
     console.log({user});
-    
-		const headers = token ? { Authorization: `Bearer ${token}` } : {};
+	const jwt = Cookies.get('jwt');
+
+		const headers = jwt ? { Authorization: `Bearer ${jwt}` } : {};
 
 		const fetch = async () => {
 			try {
@@ -28,18 +27,7 @@ export default function Profile() {
 		};
 		fetch();
 	}, []);
-	let test = Cookies.get("token");
 
-	const logOut = async () => {
-		try {
-			const response = await axios.post("http://localhost:5000/auth/signout");
-
-			saveUserStatus(false);
-		} catch (error) {
-			//   throw new Error(`Error making POST request: ${error}`);
-			console.log(error);
-		}
-	};
 
 	return (
 		<>

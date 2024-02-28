@@ -8,7 +8,6 @@ import { useNavigate } from "react-router-dom";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 
-import userStatusService from "../stores/userStatusStore";
 import useThemeStore from "../stores/themeStore";
 
 import Form from "react-bootstrap/Form";
@@ -20,9 +19,7 @@ import Col from "react-bootstrap/Col";
 
 function RegisterPage() {
 	const { isDarkMode } = useThemeStore();
-	const [ok, setOk] = useState(false);
 	const navigate = useNavigate();
-	const { saveUserStatus } = userStatusService();
 
 	const Toggle = useCallback(() => {
 		navigate("/login");
@@ -56,14 +53,7 @@ function RegisterPage() {
 				const response = await axios.post(
 					"http://localhost:5000/auth/register",
 					{ username,email, password }
-					//withCredentials:true :==> to allow this request to get credentials from that API Endpoint.
-					// { withCredentials: true }
 				);
-				// console.log("===>", response);
-				// console.log("i===>", response.data.id);
-				// saveUserStatus(true);
-				// setOk(true);
-				// navigate("/profile");
 				return response.data;
 			} catch (error) {
 				console.log(error);

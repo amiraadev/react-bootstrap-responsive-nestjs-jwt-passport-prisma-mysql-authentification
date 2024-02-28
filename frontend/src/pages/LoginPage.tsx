@@ -8,7 +8,6 @@ import { useNavigate } from "react-router-dom";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 
-import userStatusService from "../stores/userStatusStore";
 import useThemeStore from "../stores/themeStore";
 
 import Form from "react-bootstrap/Form";
@@ -19,14 +18,13 @@ import Col from "react-bootstrap/Col";
 
 import Button from "../components/Button";
 import { useAuthStore } from "../stores/authStore";
-import { User, getCurrentUser } from "../actions/getCurrentUser";
 
 import Cookies from 'js-cookie';
 
 
 function LoginPage() {
 	const navigate = useNavigate();
-	const { setIsLoggedIn, setUser, setToken, token } = useAuthStore();
+	const { setIsLoggedIn } = useAuthStore();
 	const { isDarkMode } = useThemeStore();
 
 	const Toggle = useCallback(() => {
@@ -56,7 +54,6 @@ function LoginPage() {
 				setIsLoggedIn(true);
 				// document.cookie = `jwt=${response.data}; path=/;`;
 				 Cookies.set('jwt', response.data, { expires: 1 });
-				// setToken(response.data);			
 				navigate("/profile");
 				return response.data;
 			} catch (error) {

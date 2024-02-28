@@ -4,7 +4,6 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { User, getCurrentUser } from "../../src/actions/getCurrentUser";
 import useThemeStore from "../stores/themeStore";
-import { userStatusStore } from "../stores/userStatusStore";
 
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
@@ -21,30 +20,22 @@ function CollapsibleExample() {
 	const navigate = useNavigate();
 	const { isDarkMode } = useThemeStore();
 	const [displayedUser, setDisplayedUser] = useState<User | null>(null);
-	const { setIsLoggedIn, setUser, setToken, token } = useAuthStore();
+	const { setIsLoggedIn, setUser, setToken  } = useAuthStore();
 
-	const user = getCurrentUser(token);
+	const user = getCurrentUser();
 
 	const handleLogout =async() => {
+		Cookies.remove('jwt');
 		setIsLoggedIn(false);
 		setUser(null);
 		setToken(null);
-		
 
 	};
+	const jwt = Cookies.get('jwt');
+
 	useEffect(() => {
-		const jwt = Cookies.get('jwt');
-
-if (jwt) {
-  // Do something with the retrieved cookie value
-  console.log("Retrieved cookie value:", jwt);
-} else {
-  // Handle the scenario where the cookie doesn't exist
-  console.log("Cookie 'jwt' not found");
-}
-
 		setDisplayedUser(user);
-	}, [token]);
+	}, [jwt]);
 	return (
 		<Navbar
 			bg={`${isDarkMode ? "dark" : "light"}`}
