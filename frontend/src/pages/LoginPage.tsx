@@ -1,6 +1,6 @@
 /** @format */
 
-import { useCallback, useState } from "react";
+import { useCallback, useRef, useState } from "react";
 import axios from "axios";
 
 import { useNavigate } from "react-router-dom";
@@ -19,10 +19,14 @@ import Col from "react-bootstrap/Col";
 import Button from "../components/Button";
 import { useAuthStore } from "../stores/authStore";
 
-import Cookies from 'js-cookie';
-
+import Cookies from "js-cookie";
 
 function LoginPage() {
+	const [error, setError] = useState("");
+	const form = useRef<HTMLFormElement>(null);
+	const emailInputRef = useRef<HTMLInputElement>(null); // Ref for email input
+	const passwordInputRef = useRef<HTMLInputElement>(null);
+
 	const navigate = useNavigate();
 	const { setIsLoggedIn } = useAuthStore();
 	const { isDarkMode } = useThemeStore();
@@ -47,17 +51,21 @@ function LoginPage() {
 		onSubmit: async (values) => {
 			const { email, password } = values;
 			try {
-				const response = await axios.post(
-					"http://localhost:5000/auth/login",
-					{ email, password }
-				);
+				const response = await axios.post("http://localhost:5000/auth/login", {
+					email,
+					password,
+				});
 				setIsLoggedIn(true);
 				// document.cookie = `jwt=${response.data}; path=/;`;
-				 Cookies.set('jwt', response.data, { expires: 1 });
+				Cookies.set("jwt", response.data, { expires: 1 });
 				navigate("/profile");
 				return response.data;
 			} catch (error) {
 				console.log(error);
+				setError("Invalid Credentials");
+				// emailInputRef.current!.focus();
+				// passwordInputRef.current!.focus();
+				form.current!.reset();
 			}
 		},
 	});
@@ -84,10 +92,12 @@ function LoginPage() {
 								} `}>
 								Login to your account
 							</Card.Text>
-							<Form className='px-5' onSubmit={formik.handleSubmit}>
+							<Form ref={form} className='px-5' onSubmit={formik.handleSubmit} >
+								<div className='text-danger px-2'>{error}</div>
 								<fieldset>
 									<Form.Group className='mt-3'>
 										<Form.Control
+											ref={emailInputRef}
 											size='lg'
 											type='email'
 											className='form-control'
@@ -106,6 +116,7 @@ function LoginPage() {
 									) : null}
 									<Form.Group className='mt-3 mb-4'>
 										<Form.Control
+											ref={passwordInputRef}
 											size='lg'
 											type='password'
 											className='form-control'

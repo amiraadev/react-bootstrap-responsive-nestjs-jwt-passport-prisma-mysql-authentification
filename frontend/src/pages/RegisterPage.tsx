@@ -46,8 +46,6 @@ function RegisterPage() {
 				.oneOf([Yup.ref("password")], "Passwords must match"),
 		}),
 		onSubmit: async (values) => {
-			console.log("hello");
-
 			const {username, email, password } = values;
 			try {
 				const response = await axios.post(

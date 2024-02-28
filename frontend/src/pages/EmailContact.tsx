@@ -21,9 +21,6 @@ function EmailContact() {
 	const navigate = useNavigate();
 	const { isDarkMode } = useThemeStore();
 
-	const Toggle = useCallback(() => {
-		navigate("/register");
-	}, []);
 
 	const form = useRef<HTMLFormElement>(null);
 
