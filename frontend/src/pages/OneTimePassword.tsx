@@ -12,10 +12,30 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 
 import Button from "../components/Button";
+import { useResetPasswordStore } from "../stores/resetPasswordStore";
+import axios from "axios";
+import toast from "react-hot-toast";
 const OneTimePassword = () => {
     const navigate = useNavigate();
 	const { isDarkMode } = useThemeStore();
+    const { setOTP } = useResetPasswordStore();
 
+    const verifyOTP = useCallback((values:any) => {
+        const {email} = values;
+		const OTP = Math.floor(Math.random() * 9000 + 1000);
+        setOTP(OTP.toString());
+		console.log(OTP);
+		axios.post("http://localhost:5000/auth/verifyOTP", {
+			OTP,
+            email
+		}).then(()=>{
+			navigate("/resetPassword");
+		}).catch((error: any) => {
+            console.error("Error sending email:", error.text);
+            toast.error("That address is either invalid, not a verified primary email or is not associated with a personal user account.")
+        });;
+
+	}, []);
 
 	const form = useRef<HTMLFormElement>(null);
   return (
@@ -39,9 +59,9 @@ const OneTimePassword = () => {
 										? "bg-dark dark-modal text-center"
 										: "text-muted bg-light text-center"
 								} `}>
-								We'd love to hear from you!
+								We have sent a code to your email {}
 							</Card.Text>
-							<Form className='px-5' ref={form} onSubmit={sendEmail}>
+							<Form className='px-5' ref={form} onSubmit={verifyOTP}>
 								<fieldset>
 									<Form.Group className='mt-3 mb-4'>
 										<Form.Control

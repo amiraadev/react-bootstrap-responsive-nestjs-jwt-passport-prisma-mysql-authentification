@@ -16,16 +16,19 @@ import Col from "react-bootstrap/Col";
 import Button from "../components/Button";
 import axios from "axios";
 import toast from "react-hot-toast";
+import { useResetPasswordStore } from "../stores/resetPasswordStore";
 const ResetPassword = () => {
 
 	const navigate = useNavigate();
 	const { isDarkMode } = useThemeStore();
+	const { setOTP } = useResetPasswordStore();
 
 	const form = useRef<HTMLFormElement>(null);
 
-    const setOTP = useCallback((values:any) => {
+    const sendRecoveryEmail = useCallback((values:any) => {
         const {email} = values;
 		const OTP = Math.floor(Math.random() * 9000 + 1000);
+        setOTP(OTP.toString());
 		console.log(OTP);
 		axios.post("http://localhost:5000/auth/sendRecoveryEmail", {
 			OTP,
@@ -61,7 +64,7 @@ const ResetPassword = () => {
 								Enter your user account's email address and we will send you a
 								one time password.
 							</Card.Text>
-							<Form className='px-5' ref={form} onSubmit={setOTP}>
+							<Form className='px-5' ref={form} onSubmit={sendRecoveryEmail}>
 								<fieldset>
 									<Form.Group className='mt-3'>
 										<Form.Control

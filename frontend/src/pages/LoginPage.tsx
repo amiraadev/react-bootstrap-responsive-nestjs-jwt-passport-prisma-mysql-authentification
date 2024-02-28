@@ -38,16 +38,11 @@ function LoginPage() {
 		navigate("/register");
 	}, []);
 
-	const setOTP = useCallback(() => {
-		const OTP = Math.floor(Math.random() * 9000 + 1000);
-		console.log(OTP);
-		axios.post("http://localhost:5000/auth/sendRecoveryEmail", {
-			OTP,
-		}).then(()=>{
-			navigate("/resetPassword");
-		});
-
+	const resetPassword = useCallback(() => {
+		navigate("/resetPassword");
 	}, []);
+
+
 
 	const formik = useFormik({
 		initialValues: {
@@ -170,7 +165,7 @@ function LoginPage() {
 							</div>
 							<div className='m-3 d-flex justify-content-center align-items-center '>
 								<div
-									onClick={setOTP}
+									onClick={resetPassword}
 									className='fw-light pointer-on-hover p-1 div-on-hover'>
 									Forget Password
 								</div>

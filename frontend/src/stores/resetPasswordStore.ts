@@ -2,30 +2,25 @@
 
 import { create } from "zustand";
 import { persist, devtools } from "zustand/middleware";
-import { User } from "../actions/getCurrentUser";
 
 export interface ResetPasswordState {
-	isLoggedIn: boolean;
-	user: null | User;
-	token: string | null;
+	email: string | null;
+	OTP: string | null;
 }
 
 export interface ResetPasswordActions {
-	setIsLoggedIn: (isLoggedIn: boolean) => void;
-	setUser: (user: ResetPasswordState["user"]) => void;
-	setToken: (token: ResetPasswordState["token"]) => void;
+	setEmail: (email: ResetPasswordState["email"]) => void;
+	setOTP: (OTP: ResetPasswordState["OTP"]) => void;
 }
 
 export const useResetPasswordStore = create<ResetPasswordState & ResetPasswordActions>()(
 	devtools(
 		persist(
 			(set) => ({
-				isLoggedIn: false,
-				user: null,
-				token: null,
-				setIsLoggedIn: (isLoggedIn) => set({ isLoggedIn }),
-				setUser: (user) => set({ user }),
-				setToken: (token) => set({ token }),
+				email: null,
+				OTP: null,
+				setEmail: (email) => set({ email }),
+				setOTP: (OTP) => set({ OTP }),
 			}),
 			{
 				name: "ResetPassword-storage",
