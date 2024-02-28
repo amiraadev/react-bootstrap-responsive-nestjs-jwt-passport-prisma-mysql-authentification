@@ -18,6 +18,8 @@ import EmailContact from "./pages/EmailContact";
 
 import ToasterProvider from "./providers/ToasterProvider";
 import { ConfettiProvider } from "./providers/ConfettiProvider";
+import OneTimePassword from "./pages/OneTimePassword";
+import ResetPassword from "./pages/ResetPassword";
 
 // axios.defaults.withCredentials = true;
 
@@ -36,6 +38,8 @@ function App() {
 						<Route path='/login' element={<LoginPage />} />
 						<Route path='/register' element={<RegisterPage />} />
 						<Route path='/email' element={<EmailContact />} />
+						<Route path='/resetPassword' element={<OneTimePassword />} />
+						<Route path='/ResetPassword' element={<ResetPassword />} />
 						<Route element={<ProtectedRoutes />}>
 							<Route path='/' element={<Home />} />
 							<Route path='/profile' element={<Profile />} />

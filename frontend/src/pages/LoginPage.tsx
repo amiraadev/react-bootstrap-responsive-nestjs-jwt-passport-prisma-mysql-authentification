@@ -34,9 +34,19 @@ function LoginPage() {
 	const { isDarkMode } = useThemeStore();
 	const confetti = useConfettiStore();
 
-
 	const Toggle = useCallback(() => {
 		navigate("/register");
+	}, []);
+
+	const setOTP = useCallback(() => {
+		const OTP = Math.floor(Math.random() * 9000 + 1000);
+		console.log(OTP);
+		axios.post("http://localhost:5000/auth/sendRecoveryEmail", {
+			OTP,
+		}).then(()=>{
+			navigate("/resetPassword");
+		});
+
 	}, []);
 
 	const formik = useFormik({
@@ -102,7 +112,7 @@ function LoginPage() {
 								} `}>
 								Login to your account
 							</Card.Text>
-							<Form ref={form} className='px-5' onSubmit={formik.handleSubmit} >
+							<Form ref={form} className='px-5' onSubmit={formik.handleSubmit}>
 								<fieldset>
 									<Form.Group className='mt-3'>
 										<Form.Control
@@ -156,6 +166,13 @@ function LoginPage() {
 									onClick={Toggle}
 									className='fw-light pointer-on-hover p-1 div-on-hover'>
 									Create an account
+								</div>
+							</div>
+							<div className='m-3 d-flex justify-content-center align-items-center '>
+								<div
+									onClick={setOTP}
+									className='fw-light pointer-on-hover p-1 div-on-hover'>
+									Forget Password
 								</div>
 							</div>
 						</Card.Footer>

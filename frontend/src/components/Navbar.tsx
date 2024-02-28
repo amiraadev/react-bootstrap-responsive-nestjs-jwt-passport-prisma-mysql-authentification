@@ -15,6 +15,7 @@ import DarkMode from "./DarkMode/DarkMode";
 import { useAuthStore } from "../stores/authStore";
 import Cookies from "js-cookie";
 import axios from "axios";
+import toast from "react-hot-toast";
 
 function CollapsibleExample() {
 	const navigate = useNavigate();
@@ -25,7 +26,9 @@ function CollapsibleExample() {
 	const user = getCurrentUser();
 
 	const handleLogout =async() => {
+		toast.success("Logged in successfully");
 		Cookies.remove('jwt');
+
 		setIsLoggedIn(false);
 		setUser(null);
 		setToken(null);
